@@ -33,7 +33,7 @@
 | 25 дней | ОГРАНИЧЕНИЕ | Проверенный обычный Open-Meteo API даёт максимум 16; показываем 7, кнопка объясняет ограничение, фальшивого прогноза нет |
 | Виджет со звёздочкой | НЕ РЕАЛИЗОВАН | Дополнительный пункт, отмечен явно |
 | Attribution и permissions | PASS | Open-Meteo/GeoNames в UI; HTTPS; NSLocationWhenInUseUsageDescription, reduced accuracy, PrivacyInfo; секретов нет |
-| GitHub: отдельные main и feature, PR | См. итог публикации | Чистая стартовая main, реализация в feature/diploma-weather-app; PR не мержится |
+| GitHub: отдельные main и feature, PR | PASS | [PR #1](https://github.com/Revangar/ios-weather-diploma/pull/1), OPEN, main ← feature/diploma-weather-app; не мержен |
 
 ## Как выполнялись проверки
 
@@ -110,3 +110,10 @@ Xcode выводит предупреждение metadata extraction без App
 Итого проверено **12 разных unit-тестов, 6 разных UI-кейсов на iPhone и 2 UI-кейса на iPad**; повторы не складываются в число уникальных тестов. Сводки xcresult: [iPhone](evidence/iphone-tests-summary.json), [управление городами](evidence/management-tests-summary.json), [iPad](evidence/ipad-tests-summary.json). [Краткие строки PASS и build](evidence/checks.txt), [хэши исходников и логов](evidence/validation-summary.json), [окружение](evidence/environment.txt).
 
 Финальная iPhone accessibility/landscape проверка после удаления декоративной линии при крупном тексте: **1 UI, 0 failures**, `iphone-adaptive-final.xcresult`, [JSON summary](evidence/adaptive-tests-summary.json). PNG 13–15 обновлены из этой сессии.
+
+## Публикация
+
+Репозиторий: [Revangar/ios-weather-diploma](https://github.com/Revangar/ios-weather-diploma).
+PR: [#1 — UIKit-прогноз погоды с Core Data и офлайн-режимом](https://github.com/Revangar/ios-weather-diploma/pull/1), **OPEN**, base `main`, head `feature/diploma-weather-app`. Реализация и проверенные исходники: commit `93701a97e3a95ed54ca8a05c16fbbabb0a68e005`; исходная main: `0ffb5e8`. Последующее изменение отчёта добавляет только ссылку публикации. PR не мержился. GitHub CI не настроен; приведены результаты локальных запусков.
+
+`gh auth status`, создание отдельного репозитория, push main/feature, `gh pr create`, `gh pr status`, проверка OPEN/mergeable и `git diff --check` выполнены на Mac. В PR опубликованы критерии проверки, ограничения и скриншоты.

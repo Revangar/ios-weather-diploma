@@ -50,3 +50,5 @@ Xcode 26.6 / iOS Simulator 26.5: Debug и Release **BUILD SUCCEEDED**; **12 unit
 | Обычный запуск, живая сеть | iPad, тёмная тема, тестовый транспорт |
 |---|---|
 | <img src="docs/evidence/iphone-live-weather.png" width="280" alt="Живой прогноз на iPhone"> | <img src="docs/evidence/ipad-03-weather-moscow.png" width="350" alt="iPad dark UI test"> |
+
+[PR для проверки диплома #1](https://github.com/Revangar/ios-weather-diploma/pull/1) — открыт, не мержен.
