@@ -1,0 +1,10 @@
+.DS_Store
+DerivedData/
+.build/
+*.xcuserstate
+xcuserdata/
+*.xcresult/
+*.log
+.env
+*.p12
+*.mobileprovision
