@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-30",
+  "xcode": "26.6 (17F113)",
+  "sdk": "iOS Simulator 26.5",
+  "runtime": "iOS 26.5 (23F77)",
+  "scheme": "WeatherDiploma",
+  "debug_build": "PASS",
+  "release_build": "PASS",
+  "unit_tests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "iphone_distinct_ui_tests": {
+    "passed": 6,
+    "failed": 0,
+    "basis": "5-case full suite plus separately verified city-management case; main journey repeated after UI changes"
+  },
+  "ipad_ui_tests": {
+    "passed": 2,
+    "failed": 0,
+    "appearance": "dark",
+    "landscape_and_accessibility_text": true
+  },
+  "live_api_cities": [
+    "Moscow",
+    "Berlin"
+  ],
+  "offline_method": "URLProtocol notConnectedToInternet, not a network-interface outage",
+  "widget": "NOT_IMPLEMENTED",
+  "forecast_25_days": "UNAVAILABLE; explained in app",
+  "physical_devices": "NOT_RUN",
+  "release_ui": "NOT_RUN",
+  "notification_delivery": "NOT_RUN",
+  "code_sha256": {
+    "WeatherDiploma/App/AppDelegate.swift": "096184799f6d05ead47c27e193648734901df07c6186b356146ddc26243ac69d",
+    "WeatherDiploma/App/DebugNetwork.swift": "d74eb5690e4c9c3a436dce6e1f959063f8e88eea7aa7a9ec700f62fa91b77fc0",
+    "WeatherDiploma/Domain/Models.swift": "3d53691311283ee178784ec3d41bd944c42465df18b85c6958cf74b1e515e8ba",
+    "WeatherDiploma/Persistence/CoreDataStack.swift": "6f2b7c4a24f2c7490931b0e37850e6a0ca610ecec6e1565df292c9d3d91b4753",
+    "WeatherDiploma/Persistence/WeatherRepository.swift": "dea62542d7f2a795fcee12b72d9ec105c8d76f4372a817f9eaa91e1f3c8bfefb",
+    "WeatherDiploma/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png": "21732f7fb04677779d5167292f05a21ca0343c320fe98ac86456f7bea9e224cc",
+    "WeatherDiploma/Resources/Assets.xcassets/AppIcon.appiconset/Contents.json": "6ad2c5c3bbcf972c7f02d217d6afcac3f24a10e30510c7e2d06c582371ed9d22",
+    "WeatherDiploma/Resources/Assets.xcassets/Contents.json": "10e3b5dc202f1cd9fad1f688c8fc9fe9e9669bf3f8295e67d216b10fd99b6f49",
+    "WeatherDiploma/Resources/Assets.xcassets/LaunchBackground.colorset/Contents.json": "4903316838f18b6909bdc049bbbccdf9e080f6ca3a3d37fdb3c6b82a1c5ae96f",
+    "WeatherDiploma/Resources/Fixtures/forecast-fixture.json": "ca1d223606b1b6b5f7e48b0476655a239e88d202fa93b16cf439865c4b5c36eb",
+    "WeatherDiploma/Resources/Info.plist": "50c01cd7621760f0af5a0787037c23f4bcc15fc7511ec48249f42457f81cad00",
+    "WeatherDiploma/Resources/PrivacyInfo.xcprivacy": "8f77e96341fa6cb4f1ce76bad84e8fa35449ca6db4f33bb0e1cfd035ee935c02",
+    "WeatherDiploma/Resources/WeatherModel.xcdatamodeld/WeatherModel.xcdatamodel/contents": "5fdf3fcf341166c27570cc30a1f292cc5050648a3dbab53f15ee3a351e19e3e9",
+    "WeatherDiploma/Services/GeocodingService.swift": "4be2444e38b4cd64d8615d776c67bc52322e537ded56b58310d3da3f8a8015be",
+    "WeatherDiploma/Services/LocationService.swift": "2ddc0542566b3ae3e9249e5dc834f1342b45628d2a0058df0d0604f33602ea8f",
+    "WeatherDiploma/Services/WeatherAPIClient.swift": "7104e6a13fbbae3fd5cf4e294e755d3d7ed4b365977d2b8f859d33fa93f5043a",
+    "WeatherDiploma/UI/Components.swift": "5c42c3b04c68febd0df4f9c9c9101dce2be94923b57e55efc2e2f1c6bf5555bf",
+    "WeatherDiploma/UI/ForecastDetailViewController.swift": "a3a020a5ffd8251c04db5742bc769ecd66f425aa8d3bd26f15a5cd7c3ff89b18",
+    "WeatherDiploma/UI/OnboardingViewController.swift": "a230f5a3d104d6ce67c692b8fa77c2e1e6fa2f3f46deeb7a296f75fee7e1b11f",
+    "WeatherDiploma/UI/SettingsViewController.swift": "d7f6d93f6be0d54d4d9490d10348eb57840d78aed5833728fa2b4e9f6c164045",
+    "WeatherDiploma/UI/WeatherRootViewController.swift": "b57c5e5893edbd7535d0bd92c0ff69d75c67b63ac9b57e605493f9c5a55ce369",
+    "WeatherDiploma/UI/WeatherViewController.swift": "0d2035ea9682740f4ee76cbb477063573c53cc984faaadc0df3ce868e9a92894",
+    "WeatherDiploma.xcodeproj/project.pbxproj": "36f931f55352ea6ab4c32bc1efb8c851b4f15419f3338758bbaab7637eb80cf5",
+    "WeatherDiploma.xcodeproj/xcshareddata/xcschemes/WeatherDiploma.xcscheme": "f1633e96bb108ce3c50b2373828fdee16a64993613bdc85adba726920b40090f",
+    "WeatherDiplomaTests/WeatherDiplomaTests.swift": "95ec852e2c564a7132533088ec77e1e1cd890f9b415946be8eee88208442499a",
+    "WeatherDiplomaUITests/WeatherDiplomaUITests.swift": "975d6a5e79c293267898927ca20ac78ed482bd6c98785c13bb83576a7cc71091",
+    "scripts/generate_project.py": "b01f94e7a12f88670fafde0129dcc166923fd3d46482c770edeb5e7e890039fe"
+  },
+  "receipts": {
+    "build-debug-final.log": {
+      "sha256": "b94209835761b038c1230aa6828779b4f745b187910e794fc1a544212a4f6c83",
+      "relevant_lines": [
+        "** BUILD SUCCEEDED **"
+      ]
+    },
+    "build-release-final.log": {
+      "sha256": "7e285df49f9676c5eb2195816e2d5d190a30c3c67fb8755aa6e7fbfbcdabde09",
+      "relevant_lines": [
+        "** BUILD SUCCEEDED **"
+      ]
+    },
+    "iphone-tests-final.log": {
+      "sha256": "bea29a58a29324a91ec20bf379af34100186358387865265ae1f41b9429d3fd1",
+      "relevant_lines": [
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.069 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.005 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.003 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.002 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.002 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.006 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.004 seconds).",
+        "Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.002 seconds).",
+        "\t Executed 12 tests, with 0 failures (0 unexpected) in 0.099 (0.103) seconds",
+        "\t Executed 12 tests, with 0 failures (0 unexpected) in 0.099 (0.103) seconds",
+        "\t Executed 12 tests, with 0 failures (0 unexpected) in 0.099 (0.104) seconds",
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (37.976 seconds).",
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (53.280 seconds).",
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionAllowed]' passed (11.655 seconds).",
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionDeniedKeepsManualEntry]' passed (11.817 seconds).",
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testNonexistentDuplicateAndOfflineWithoutCache]' passed (39.949 seconds).",
+        "\t Executed 5 tests, with 0 failures (0 unexpected) in 154.677 (154.683) seconds",
+        "\t Executed 5 tests, with 0 failures (0 unexpected) in 154.677 (154.685) seconds",
+        "\t Executed 5 tests, with 0 failures (0 unexpected) in 154.677 (154.689) seconds",
+        "** TEST SUCCEEDED **"
+      ]
+    },
+    "iphone-management.log": {
+      "sha256": "b46e876713e274993ffbe694f0f403a48a6190e48a975ec527774599ceaa385f",
+      "relevant_lines": [
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (51.726 seconds).",
+        "** TEST SUCCEEDED **"
+      ]
+    },
+    "iphone-management-verified.log": {
+      "sha256": "1ad29922247bae987ab267d1227457d75309144c07a380f15296cb87741b2310",
+      "relevant_lines": [
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCityManagementAndLocationFromSettings]' passed (31.238 seconds).",
+        "** TEST EXECUTE SUCCEEDED **"
+      ]
+    },
+    "ipad-tests-final.log": {
+      "sha256": "3a636f60ae46c4b9eb89d4ec936b3596cd07a7f5e0c9b402054f7421b983935d",
+      "relevant_lines": [
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (28.612 seconds).",
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (54.912 seconds).",
+        "\t Executed 2 tests, with 0 failures (0 unexpected) in 83.524 (83.528) seconds",
+        "\t Executed 2 tests, with 0 failures (0 unexpected) in 83.524 (83.529) seconds",
+        "\t Executed 2 tests, with 0 failures (0 unexpected) in 83.524 (83.530) seconds",
+        "** TEST EXECUTE SUCCEEDED **"
+      ]
+    },
+    "live-api.log": {
+      "sha256": "368daf6ec8b939d25760e95b6334027a0677acd92f268128340d109e5caa481c",
+      "relevant_lines": [
+        "PASS Москва: timezone=Europe/Moscow days=7 hours=168 next24=24 temperature=11.1",
+        "PASS Берлин: timezone=Europe/Berlin days=7 hours=168 next24=24 temperature=9.0"
+      ]
+    },
+    "iphone-adaptive-final.log": {
+      "sha256": "6d9dd943b10326d881a20b98dabd508598d5d2c692cc7ef292fd48249976f167",
+      "relevant_lines": [
+        "Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (31.860 seconds).",
+        "** TEST EXECUTE SUCCEEDED **"
+      ]
+    }
+  }
+}

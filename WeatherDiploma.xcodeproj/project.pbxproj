@@ -1,0 +1,670 @@
+// !$*UTF8*$!
+{
+	"archiveVersion" = "1";
+	"classes" = {
+	};
+	"objectVersion" = "56";
+	"objects" = {
+		"AA4DC15C82F0517BF7EE9FD9" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/App/AppDelegate.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"CEA62BF6C106EF1EFFFACF63" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "AA4DC15C82F0517BF7EE9FD9";
+		};
+		"7EAD97AC5497E6E0A6E4F7C6" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/App/DebugNetwork.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"B457C774D59ACD31280BB99A" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "7EAD97AC5497E6E0A6E4F7C6";
+		};
+		"D182BB132460EB3B4742B655" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/Domain/Models.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"23964B0B8E161D38CD3DB0FE" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "D182BB132460EB3B4742B655";
+		};
+		"5687A9E492A33D8D97D891C2" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/Persistence/CoreDataStack.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"283A3D27A0C10E76BBE13070" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "5687A9E492A33D8D97D891C2";
+		};
+		"99794AB16E6C2A5913DA8A4B" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/Persistence/WeatherRepository.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"C254C2B2ABF161D2E2C5A63F" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "99794AB16E6C2A5913DA8A4B";
+		};
+		"43DFD51A1F1E77A295021D65" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/Services/GeocodingService.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"452B82E248B4E310E8C1E32C" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "43DFD51A1F1E77A295021D65";
+		};
+		"80C868C5DD7DBF0E7C75B95B" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/Services/LocationService.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"D8CC48982E888EF2BF56F6D2" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "80C868C5DD7DBF0E7C75B95B";
+		};
+		"795CFAEE5ABEE1B799F00909" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/Services/WeatherAPIClient.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"D728E8B85D08BBD0DF2CFD83" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "795CFAEE5ABEE1B799F00909";
+		};
+		"925880B255CEF4F958A95B9F" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/Components.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"508A100DCC7F3420276F0212" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "925880B255CEF4F958A95B9F";
+		};
+		"19927423B05DE176514CFB6B" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/ForecastDetailViewController.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"1A139980E572EB80870A62C3" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "19927423B05DE176514CFB6B";
+		};
+		"22FB00A64472E4CD8EF5E2B2" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/OnboardingViewController.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"E7A8EAF90360ACCA67FEB054" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "22FB00A64472E4CD8EF5E2B2";
+		};
+		"2251107B0166F5CA0A77F9AA" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/SettingsViewController.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"3EAD026B2757DE70D2DDF379" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "2251107B0166F5CA0A77F9AA";
+		};
+		"AC386D29263DF93B8E7B3CEC" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/WeatherRootViewController.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"D3A23D28DF15178B38199C06" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "AC386D29263DF93B8E7B3CEC";
+		};
+		"293F6612602E16EA171F2B11" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/WeatherViewController.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"A5256C40A989FEF9E8043A75" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "293F6612602E16EA171F2B11";
+		};
+		"DE41CDAE9896B0F689800277" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.json";
+			"path" = "WeatherDiploma/Resources/Fixtures/forecast-fixture.json";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"CFD74ADC7D49C51FAAC34D79" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "DE41CDAE9896B0F689800277";
+		};
+		"294ACE05F658E46EDDFABF1C" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "text.xml";
+			"path" = "WeatherDiploma/Resources/PrivacyInfo.xcprivacy";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"7CBC6DA67761238E8A5827AB" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "294ACE05F658E46EDDFABF1C";
+		};
+		"54047963404B8BA7441D0932" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "folder.assetcatalog";
+			"path" = "WeatherDiploma/Resources/Assets.xcassets";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"11B50526793A1C713479A35D" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "54047963404B8BA7441D0932";
+		};
+		"FF8D90F26BCA41E7A2470B1E" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "wrapper.xcdatamodel";
+			"path" = "WeatherModel.xcdatamodel";
+			"sourceTree" = "<group>";
+		};
+		"1D06A0D76F000E6EDD18DE49" = {
+			"isa" = "XCVersionGroup";
+			"children" = (
+				"FF8D90F26BCA41E7A2470B1E",
+			);
+			"currentVersion" = "FF8D90F26BCA41E7A2470B1E";
+			"path" = "WeatherDiploma/Resources/WeatherModel.xcdatamodeld";
+			"sourceTree" = "SOURCE_ROOT";
+			"versionGroupType" = "wrapper.xcdatamodel";
+		};
+		"31E13AAD07CB2C9F82FC5E77" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "1D06A0D76F000E6EDD18DE49";
+		};
+		"7B56E1B793A835D077DDE5BA" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"CEA62BF6C106EF1EFFFACF63",
+				"B457C774D59ACD31280BB99A",
+				"23964B0B8E161D38CD3DB0FE",
+				"283A3D27A0C10E76BBE13070",
+				"C254C2B2ABF161D2E2C5A63F",
+				"452B82E248B4E310E8C1E32C",
+				"D8CC48982E888EF2BF56F6D2",
+				"D728E8B85D08BBD0DF2CFD83",
+				"508A100DCC7F3420276F0212",
+				"1A139980E572EB80870A62C3",
+				"E7A8EAF90360ACCA67FEB054",
+				"3EAD026B2757DE70D2DDF379",
+				"D3A23D28DF15178B38199C06",
+				"A5256C40A989FEF9E8043A75",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"643952FD71B993FEA5F6699A" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"CFD74ADC7D49C51FAAC34D79",
+				"7CBC6DA67761238E8A5827AB",
+				"11B50526793A1C713479A35D",
+				"31E13AAD07CB2C9F82FC5E77",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"2FEC0970FDF630D1517869C3" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"14206E6123374D88CE1490AE" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.application";
+			"includeInIndex" = "0";
+			"path" = "WeatherDiploma.app";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"8BBB35E495246AA2DC51AB69" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.revangar.WeatherDiploma";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_VERSION" = "6.0";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"ENABLE_TESTABILITY" = "YES";
+				"INFOPLIST_FILE" = "WeatherDiploma/Resources/Info.plist";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "1.0";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"SUPPORTS_MACCATALYST" = "NO";
+			};
+			"name" = "Debug";
+		};
+		"172E1900307E28569068081C" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.revangar.WeatherDiploma";
+				"GENERATE_INFOPLIST_FILE" = "NO";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_VERSION" = "6.0";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"ENABLE_TESTABILITY" = "NO";
+				"INFOPLIST_FILE" = "WeatherDiploma/Resources/Info.plist";
+				"ASSETCATALOG_COMPILER_APPICON_NAME" = "AppIcon";
+				"CURRENT_PROJECT_VERSION" = "1";
+				"MARKETING_VERSION" = "1.0";
+				"SUPPORTED_PLATFORMS" = "iphoneos iphonesimulator";
+				"SUPPORTS_MACCATALYST" = "NO";
+			};
+			"name" = "Release";
+		};
+		"1078BBCF7F8793144307FD71" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"8BBB35E495246AA2DC51AB69",
+				"172E1900307E28569068081C",
+			);
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"7DC72F439F85C138C586C3FD" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "1078BBCF7F8793144307FD71";
+			"buildPhases" = (
+				"7B56E1B793A835D077DDE5BA",
+				"2FEC0970FDF630D1517869C3",
+				"643952FD71B993FEA5F6699A",
+			);
+			"buildRules" = (
+			);
+			"dependencies" = (
+			);
+			"name" = "WeatherDiploma";
+			"productName" = "WeatherDiploma";
+			"productReference" = "14206E6123374D88CE1490AE";
+			"productType" = "com.apple.product-type.application";
+		};
+		"8D30DCE0C718B0A211B056EA" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiplomaTests/WeatherDiplomaTests.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"D367BB72B181DD96A9984DF6" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "8D30DCE0C718B0A211B056EA";
+		};
+		"22BEE2FD09EE5FC5A9B260DD" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"D367BB72B181DD96A9984DF6",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"C5FF9178F786A3C25709EB66" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"5AD194DA3B7163818AA30687" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"4995042D1A368FF5CEBDABAA" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.cfbundle";
+			"includeInIndex" = "0";
+			"path" = "WeatherDiplomaTests.xctest";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"3BCA65E03885EC84BAAEFAC8" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.revangar.WeatherDiplomaTests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_VERSION" = "6.0";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"ENABLE_TESTABILITY" = "YES";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/WeatherDiploma.app/WeatherDiploma";
+				"BUNDLE_LOADER" = "$(TEST_HOST)";
+			};
+			"name" = "Debug";
+		};
+		"9C14C4DE0FE05ACD0EF6BAC7" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.revangar.WeatherDiplomaTests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_VERSION" = "6.0";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"ENABLE_TESTABILITY" = "NO";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/WeatherDiploma.app/WeatherDiploma";
+				"BUNDLE_LOADER" = "$(TEST_HOST)";
+			};
+			"name" = "Release";
+		};
+		"76F7B190FC40E23E00F7A3C1" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"3BCA65E03885EC84BAAEFAC8",
+				"9C14C4DE0FE05ACD0EF6BAC7",
+			);
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"2E806D1DBEBF63297713E6A0" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"proxyType" = "1";
+			"remoteGlobalIDString" = "7DC72F439F85C138C586C3FD";
+			"remoteInfo" = "WeatherDiploma";
+		};
+		"D2C7C56637F9EA298B08FD57" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "7DC72F439F85C138C586C3FD";
+			"targetProxy" = "2E806D1DBEBF63297713E6A0";
+		};
+		"27D7F9E7FAE6478226687694" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "76F7B190FC40E23E00F7A3C1";
+			"buildPhases" = (
+				"22BEE2FD09EE5FC5A9B260DD",
+				"5AD194DA3B7163818AA30687",
+				"C5FF9178F786A3C25709EB66",
+			);
+			"buildRules" = (
+			);
+			"dependencies" = (
+				"D2C7C56637F9EA298B08FD57",
+			);
+			"name" = "WeatherDiplomaTests";
+			"productName" = "WeatherDiplomaTests";
+			"productReference" = "4995042D1A368FF5CEBDABAA";
+			"productType" = "com.apple.product-type.bundle.unit-test";
+		};
+		"62078ED9F525F6606E404B65" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiplomaUITests/WeatherDiplomaUITests.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"0FDC29D844D28519EEC42335" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "62078ED9F525F6606E404B65";
+		};
+		"BDADD2C76DF51645F520BF02" = {
+			"isa" = "PBXSourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+				"0FDC29D844D28519EEC42335",
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"550B0B7657A0E22A647E513E" = {
+			"isa" = "PBXResourcesBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"E6D356C171A3574EC8CF9B51" = {
+			"isa" = "PBXFrameworksBuildPhase";
+			"buildActionMask" = "2147483647";
+			"files" = (
+			);
+			"runOnlyForDeploymentPostprocessing" = "0";
+		};
+		"2DBDF0497B7E90A5FEE358D9" = {
+			"isa" = "PBXFileReference";
+			"explicitFileType" = "wrapper.cfbundle";
+			"includeInIndex" = "0";
+			"path" = "WeatherDiplomaUITests.xctest";
+			"sourceTree" = "BUILT_PRODUCTS_DIR";
+		};
+		"0149756DA0399CF68C2D823B" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.revangar.WeatherDiplomaUITests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_VERSION" = "6.0";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "DEBUG";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-Onone";
+				"ENABLE_TESTABILITY" = "YES";
+				"TEST_TARGET_NAME" = "WeatherDiploma";
+			};
+			"name" = "Debug";
+		};
+		"7BDFEFEC21D66ED2C7A1B1FA" = {
+			"isa" = "XCBuildConfiguration";
+			"buildSettings" = {
+				"PRODUCT_NAME" = "$(TARGET_NAME)";
+				"PRODUCT_BUNDLE_IDENTIFIER" = "com.revangar.WeatherDiplomaUITests";
+				"GENERATE_INFOPLIST_FILE" = "YES";
+				"CODE_SIGN_STYLE" = "Automatic";
+				"TARGETED_DEVICE_FAMILY" = "1,2";
+				"SWIFT_VERSION" = "6.0";
+				"SWIFT_STRICT_CONCURRENCY" = "complete";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS" = "";
+				"SWIFT_OPTIMIZATION_LEVEL" = "-O";
+				"ENABLE_TESTABILITY" = "NO";
+				"TEST_TARGET_NAME" = "WeatherDiploma";
+			};
+			"name" = "Release";
+		};
+		"B359B9CD0EB3AB5E4183A96B" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"0149756DA0399CF68C2D823B",
+				"7BDFEFEC21D66ED2C7A1B1FA",
+			);
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"81225AE73F36D8DD97D020C2" = {
+			"isa" = "PBXContainerItemProxy";
+			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
+			"proxyType" = "1";
+			"remoteGlobalIDString" = "7DC72F439F85C138C586C3FD";
+			"remoteInfo" = "WeatherDiploma";
+		};
+		"3C38801F2AC063CF8335B513" = {
+			"isa" = "PBXTargetDependency";
+			"target" = "7DC72F439F85C138C586C3FD";
+			"targetProxy" = "81225AE73F36D8DD97D020C2";
+		};
+		"38436803BEBC0C3453148A5B" = {
+			"isa" = "PBXNativeTarget";
+			"buildConfigurationList" = "B359B9CD0EB3AB5E4183A96B";
+			"buildPhases" = (
+				"BDADD2C76DF51645F520BF02",
+				"E6D356C171A3574EC8CF9B51",
+				"550B0B7657A0E22A647E513E",
+			);
+			"buildRules" = (
+			);
+			"dependencies" = (
+				"3C38801F2AC063CF8335B513",
+			);
+			"name" = "WeatherDiplomaUITests";
+			"productName" = "WeatherDiplomaUITests";
+			"productReference" = "2DBDF0497B7E90A5FEE358D9";
+			"productType" = "com.apple.product-type.bundle.ui-testing";
+		};
+		"FBDC4F23F93125BBEEAE800C" = {
+			"isa" = "PBXGroup";
+			"children" = (
+				"14206E6123374D88CE1490AE",
+				"4995042D1A368FF5CEBDABAA",
+				"2DBDF0497B7E90A5FEE358D9",
+			);
+			"name" = "Products";
+			"sourceTree" = "<group>";
+		};
+		"870B3294C0CBD48AF6BBCC1B" = {
+			"isa" = "PBXGroup";
+			"children" = (
+				"AA4DC15C82F0517BF7EE9FD9",
+				"7EAD97AC5497E6E0A6E4F7C6",
+				"D182BB132460EB3B4742B655",
+				"5687A9E492A33D8D97D891C2",
+				"99794AB16E6C2A5913DA8A4B",
+				"43DFD51A1F1E77A295021D65",
+				"80C868C5DD7DBF0E7C75B95B",
+				"795CFAEE5ABEE1B799F00909",
+				"925880B255CEF4F958A95B9F",
+				"19927423B05DE176514CFB6B",
+				"22FB00A64472E4CD8EF5E2B2",
+				"2251107B0166F5CA0A77F9AA",
+				"AC386D29263DF93B8E7B3CEC",
+				"293F6612602E16EA171F2B11",
+				"DE41CDAE9896B0F689800277",
+				"294ACE05F658E46EDDFABF1C",
+				"54047963404B8BA7441D0932",
+				"1D06A0D76F000E6EDD18DE49",
+				"8D30DCE0C718B0A211B056EA",
+				"62078ED9F525F6606E404B65",
+				"FBDC4F23F93125BBEEAE800C",
+			);
+			"sourceTree" = "<group>";
+		};
+		"89E1FD6268CC0F221A2BE178" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Debug";
+			"buildSettings" = {
+				"CLANG_ENABLE_MODULES" = "YES";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"GCC_C_LANGUAGE_STANDARD" = "gnu17";
+				"ALWAYS_SEARCH_USER_PATHS" = "NO";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf";
+				"GCC_PREPROCESSOR_DEFINITIONS" = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				"SWIFT_VERSION" = "6.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+			};
+		};
+		"E6DE6C99132752C914FEF632" = {
+			"isa" = "XCBuildConfiguration";
+			"name" = "Release";
+			"buildSettings" = {
+				"CLANG_ENABLE_MODULES" = "YES";
+				"CLANG_ENABLE_OBJC_ARC" = "YES";
+				"GCC_C_LANGUAGE_STANDARD" = "gnu17";
+				"ALWAYS_SEARCH_USER_PATHS" = "NO";
+				"DEBUG_INFORMATION_FORMAT" = "dwarf-with-dsym";
+				"GCC_PREPROCESSOR_DEFINITIONS" = (
+					"$(inherited)",
+				);
+				"SWIFT_VERSION" = "6.0";
+				"IPHONEOS_DEPLOYMENT_TARGET" = "17.0";
+				"SDKROOT" = "iphoneos";
+				"ENABLE_USER_SCRIPT_SANDBOXING" = "YES";
+			};
+		};
+		"640DC9EFD529235A8D9E2727" = {
+			"isa" = "XCConfigurationList";
+			"buildConfigurations" = (
+				"89E1FD6268CC0F221A2BE178",
+				"E6DE6C99132752C914FEF632",
+			);
+			"defaultConfigurationIsVisible" = "0";
+			"defaultConfigurationName" = "Release";
+		};
+		"98F54143AB4E86B28C3AFEE0" = {
+			"isa" = "PBXProject";
+			"attributes" = {
+				"BuildIndependentTargetsInParallel" = "YES";
+				"LastUpgradeCheck" = "2660";
+				"TargetAttributes" = {
+					"27D7F9E7FAE6478226687694" = {
+						"TestTargetID" = "7DC72F439F85C138C586C3FD";
+					};
+					"38436803BEBC0C3453148A5B" = {
+						"TestTargetID" = "7DC72F439F85C138C586C3FD";
+					};
+				};
+			};
+			"buildConfigurationList" = "640DC9EFD529235A8D9E2727";
+			"compatibilityVersion" = "Xcode 14.0";
+			"developmentRegion" = "ru";
+			"hasScannedForEncodings" = "0";
+			"knownRegions" = (
+				"ru",
+				"en",
+				"Base",
+			);
+			"mainGroup" = "870B3294C0CBD48AF6BBCC1B";
+			"productRefGroup" = "FBDC4F23F93125BBEEAE800C";
+			"projectDirPath" = "";
+			"projectRoot" = "";
+			"targets" = (
+				"7DC72F439F85C138C586C3FD",
+				"27D7F9E7FAE6478226687694",
+				"38436803BEBC0C3453148A5B",
+			);
+		};
+	};
+	"rootObject" = "98F54143AB4E86B28C3AFEE0";
+}

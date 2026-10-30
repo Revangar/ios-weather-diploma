@@ -1,0 +1,48 @@
+Xcode 26.6
+Build version 17F113
+DriverKit SDKs:
+	DriverKit 25.5                	-sdk driverkit25.5
+
+iOS SDKs:
+	iOS 26.5                      	-sdk iphoneos26.5
+
+iOS Simulator SDKs:
+	Simulator - iOS 26.5          	-sdk iphonesimulator26.5
+
+macOS SDKs:
+	macOS 26.5                    	-sdk macosx26.5
+	macOS 26.5                    	-sdk macosx26.5
+
+tvOS SDKs:
+	tvOS 26.5                     	-sdk appletvos26.5
+
+tvOS Simulator SDKs:
+	Simulator - tvOS 26.5         	-sdk appletvsimulator26.5
+
+visionOS SDKs:
+	visionOS 26.5                 	-sdk xros26.5
+
+visionOS Simulator SDKs:
+	Simulator - visionOS 26.5     	-sdk xrsimulator26.5
+
+watchOS SDKs:
+	watchOS 26.5                  	-sdk watchos26.5
+
+watchOS Simulator SDKs:
+	Simulator - watchOS 26.5      	-sdk watchsimulator26.5
+
+== Runtimes ==
+iOS 26.5 (26.5 - 23F77) - com.apple.CoreSimulator.SimRuntime.iOS-26-5
+== Devices ==
+-- iOS 26.5 --
+    iPhone 17 Pro (EAC1FFA7-FDB5-4D63-8919-B6EEEB4C3387) (Booted)
+    iPhone 17 Pro Max (D9F89A4E-B74D-472F-8C63-278FA7DA2DD4) (Shutdown)
+    iPhone 17e (41EFFC62-EF8C-4B79-B389-9DBE0A39E8EE) (Shutdown)
+    iPhone Air (8ECEF0AB-E51A-462E-A2C1-B7FAA1F6C9A7) (Shutdown)
+    iPhone 17 (25D2A171-0E7A-4A4C-8BAB-91F97CAD6151) (Shutdown)
+    iPad Pro 13-inch (M5) (35803645-2609-4433-85E8-87DCD3D4A59C) (Shutdown)
+    iPad Pro 11-inch (M5) (4375A014-5745-433F-B0A0-3387DA052058) (Shutdown)
+    iPad mini (A17 Pro) (E47497FF-8EBF-4FAF-ADE3-60DA4534D2E3) (Shutdown)
+    iPad Air 13-inch (M4) (0BEEA33A-092C-41B2-9604-CBBAEDC31A76) (Shutdown)
+    iPad Air 11-inch (M4) (5C9F2412-DDDC-4082-91EC-0C5F235D3503) (Shutdown)
+    iPad (A16) (6D01C144-A8FE-4C70-962A-162541247C36) (Shutdown)

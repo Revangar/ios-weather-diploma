@@ -1,0 +1,2 @@
+PASS Москва: timezone=Europe/Moscow days=7 hours=168 next24=24 temperature=11.1
+PASS Берлин: timezone=Europe/Berlin days=7 hours=168 next24=24 temperature=9.0
