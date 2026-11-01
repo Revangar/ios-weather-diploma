@@ -2,7 +2,7 @@ import UIKit
 
 enum Palette {
     static let blue = UIColor(red: 0.13, green: 0.29, blue: 0.77, alpha: 1)
-    static let orange = UIColor(red: 0.94, green: 0.36, blue: 0.03, alpha: 1)
+    static let orange = UIColor(red: 0.82, green: 0.26, blue: 0.02, alpha: 1)
     static let accent = UIColor { $0.userInterfaceStyle == .dark
         ? UIColor(red: 0.55, green: 0.72, blue: 1, alpha: 1) : blue }
     static let card = UIColor { $0.userInterfaceStyle == .dark
@@ -65,9 +65,10 @@ final class SunCard: UIView {
         context.setLineWidth(2)
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 18, y: rect.height - 80))
+        let controlY = (8 - (rect.height - 80) * 0.25) / 0.75
         path.addCurve(to: CGPoint(x: rect.width - 18, y: rect.height - 80),
-                      controlPoint1: CGPoint(x: 18, y: -20),
-                      controlPoint2: CGPoint(x: rect.width - 18, y: -20))
+                      controlPoint1: CGPoint(x: 18, y: controlY),
+                      controlPoint2: CGPoint(x: rect.width - 18, y: controlY))
         path.stroke()
     }
 }
@@ -133,6 +134,7 @@ final class HourStrip: UIView, UICollectionViewDataSource, UICollectionViewDeleg
     private var hours: [HourWeather] = []
     private var zone = "GMT"
     private var settings = WeatherSettings()
+    private var selectedIndex: Int?
     var onSelect: ((Int) -> Void)?
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -147,13 +149,14 @@ final class HourStrip: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         collection.dataSource = self
         collection.delegate = self
         collection.pin(in: self)
-        heightAnchor.constraint(equalToConstant: UIFontMetrics.default.scaledValue(for: 140)).isActive = true
+        heightAnchor.constraint(equalToConstant: UIFontMetrics.default.scaledValue(for: 112)).isActive = true
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    func configure(hours: [HourWeather], zone: String, settings: WeatherSettings) {
+    func configure(hours: [HourWeather], zone: String, settings: WeatherSettings, selected: Int? = nil) {
         self.hours = hours
         self.zone = zone
         self.settings = settings
+        selectedIndex = selected
         collection.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { hours.count }
@@ -164,12 +167,25 @@ final class HourStrip: UIView, UICollectionViewDataSource, UICollectionViewDeleg
         cell.icon.image = UIImage(systemName: WeatherCode.symbol(hour.code, isDay: hour.isDay))
         cell.temperature.text = settings.temperature(hour.temperature)
         cell.probability.text = WeatherFormat.number(hour.probability, suffix: "%")
+        let selected = indexPath.item == selectedIndex
+        cell.contentView.backgroundColor = selected ? Palette.blue : Palette.card
+        cell.time.textColor = selected ? .white : .secondaryLabel
+        cell.temperature.textColor = selected ? .white : .label
+        cell.probability.textColor = selected ? .white : .secondaryLabel
+        cell.icon.tintColor = selected ? .systemYellow : Palette.accent
+        cell.isAccessibilityElement = true
+        cell.accessibilityLabel = "\(settings.time(hour.time, zone: zone)), \(WeatherCode.description(hour.code)), \(settings.temperature(hour.temperature)), вероятность осадков \(WeatherFormat.number(hour.probability, suffix: "%"))"
+        cell.accessibilityTraits = selected ? [.button, .selected] : [.button]
         cell.accessibilityIdentifier = "hour-\(indexPath.item)"
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { onSelect?(indexPath.item) }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath.item
+        collectionView.reloadData()
+        onSelect?(indexPath.item)
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIFontMetrics.default.scaledValue(for: settings.twelveHour ? 104 : 88), height: bounds.height)
+        CGSize(width: UIFontMetrics.default.scaledValue(for: settings.twelveHour ? 104 : 80), height: bounds.height)
     }
 }

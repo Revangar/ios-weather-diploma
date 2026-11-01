@@ -58,9 +58,11 @@ final class WeatherDiplomaUITests: XCTestCase {
         addCity(app, query: "Berlin", country: "Германия")
         XCTAssertTrue(app.staticTexts["city-indicator"].label.contains("2 из 2"))
         screenshot("06-two-cities")
-        // Swipe in the hero, away from the horizontal hourly collection.
-        let from = app.coordinate(withNormalizedOffset: CGVector(dx: 0.15, dy: 0.4))
-        let to = app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.4))
+        // Anchor the gesture to the pager's weather area; screen coordinates hit the hourly
+        // collection on iPad once the current-weather card is compacted.
+        let weatherArea = app.tables["weather-table"].firstMatch
+        let from = weatherArea.coordinate(withNormalizedOffset: CGVector(dx: 0.15, dy: 0.17))
+        let to = weatherArea.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.17))
         from.press(forDuration: 0.1, thenDragTo: to)
         XCTAssertTrue(app.navigationBars["Москва"].waitForExistence(timeout: 5))
         app.buttons["open-settings"].tap()
@@ -149,15 +151,31 @@ final class WeatherDiplomaUITests: XCTestCase {
         for _ in 0..<8 where !app.buttons["onboarding-skip"].isHittable { app.scrollViews.firstMatch.swipeUp() }
         app.buttons["onboarding-skip"].tap()
         addCity(app, query: "Moscow", country: "Россия")
+        assertWeatherHeaderFits(app)
         screenshot("13-accessibility-portrait")
         XCUIDevice.shared.orientation = .landscapeLeft
         defer { XCUIDevice.shared.orientation = .portrait }
         XCTAssertTrue(app.tables["weather-table"].waitForExistence(timeout: 5))
+        assertWeatherHeaderFits(app)
         screenshot("14-accessibility-landscape")
         let table = app.tables["weather-table"]
         for _ in 0..<12 where !app.cells["day-6"].isHittable { table.swipeUp() }
         XCTAssertTrue(app.cells["day-6"].isHittable)
         screenshot("15-seven-days-large-text")
+    }
+    private func assertWeatherHeaderFits(_ app: XCUIApplication) {
+        let table = app.tables["weather-table"].firstMatch.frame
+        XCTAssertLessThanOrEqual(table.width, app.frame.width + 1, "Pager must fit the device width")
+        XCTAssertGreaterThanOrEqual(table.minX, app.frame.minX - 1)
+        XCTAssertLessThanOrEqual(table.maxX, app.frame.maxX + 1)
+        for element in [app.otherElements["current-weather-card"].firstMatch,
+                        app.staticTexts["weather-status"].firstMatch,
+                        app.staticTexts["current-temperature"].firstMatch] {
+            XCTAssertTrue(element.exists)
+            let frame = element.frame
+            XCTAssertGreaterThanOrEqual(frame.minX, table.minX - 1, "Header extends beyond the leading edge")
+            XCTAssertLessThanOrEqual(frame.maxX, table.maxX + 1, "Header extends beyond the trailing edge")
+        }
     }
     func testCityManagementAndLocationFromSettings() {
         let app = launch("management")

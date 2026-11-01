@@ -28,7 +28,7 @@ final class AppCoordinator {
     private let window: UIWindow
     init(window: UIWindow) { self.window = window }
     func start() {
-        let loading = UIViewController()
+        let loading = LoadingViewController()
         loading.view.backgroundColor = .systemBackground
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,10 @@ final class AppCoordinator {
         spinner.startAnimating()
         window.rootViewController = loading
         window.tintColor = Palette.accent
+        loading.onReady = { [weak self] controller in self?.openStore(controller, spinner: spinner) }
         window.makeKeyAndVisible()
+    }
+    private func openStore(_ loading: UIViewController, spinner: UIActivityIndicatorView) {
         Task {
             do {
                 var defaults = UserDefaults.standard
@@ -75,5 +78,17 @@ final class AppCoordinator {
     }
     private func NSPersistentContainerDirectory() -> URL {
         FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+    }
+}
+
+
+/// Replace the loading root only after its initial appearance transition has completed.
+private final class LoadingViewController: UIViewController {
+    var onReady: ((UIViewController) -> Void)?
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let callback = onReady
+        onReady = nil
+        callback?(self)
     }
 }

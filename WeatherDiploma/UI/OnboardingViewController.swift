@@ -1,6 +1,7 @@
 import UIKit
 
 final class OnboardingViewController: UIViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
     var onFinish: ((Bool) -> Void)?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +34,16 @@ final class OnboardingViewController: UIViewController {
         column.translatesAutoresizingMaskIntoConstraints = false
         scroll.addSubview(column)
         NSLayoutConstraint.activate([
-            column.leadingAnchor.constraint(equalTo: scroll.contentLayoutGuide.leadingAnchor, constant: 28),
-            column.trailingAnchor.constraint(equalTo: scroll.contentLayoutGuide.trailingAnchor, constant: -28),
+            scroll.contentLayoutGuide.widthAnchor.constraint(equalTo: scroll.frameLayoutGuide.widthAnchor),
+            column.centerXAnchor.constraint(equalTo: scroll.frameLayoutGuide.centerXAnchor),
+            column.leadingAnchor.constraint(greaterThanOrEqualTo: scroll.contentLayoutGuide.leadingAnchor, constant: 28),
+            column.trailingAnchor.constraint(lessThanOrEqualTo: scroll.contentLayoutGuide.trailingAnchor, constant: -28),
             column.topAnchor.constraint(equalTo: scroll.contentLayoutGuide.topAnchor, constant: 30),
             column.bottomAnchor.constraint(equalTo: scroll.contentLayoutGuide.bottomAnchor, constant: -30),
-            column.widthAnchor.constraint(equalTo: scroll.frameLayoutGuide.widthAnchor, constant: -56)
+            column.widthAnchor.constraint(lessThanOrEqualToConstant: 600)
         ])
+        let fillWidth = column.widthAnchor.constraint(equalTo: scroll.frameLayoutGuide.widthAnchor, constant: -56)
+        fillWidth.priority = .defaultHigh
+        fillWidth.isActive = true
     }
 }

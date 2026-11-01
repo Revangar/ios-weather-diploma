@@ -7,6 +7,9 @@ final class ForecastDetailViewController: UITableViewController {
     private let dailyMode: Bool
     private var selectedDay: Int
     private var selectedHour: Int
+    private weak var dayScroll: UIScrollView?
+    private weak var selectedDayButton: UIButton?
+    private var shouldAlignDay = false
     private var hours: [HourWeather] { dailyMode ? forecast.hours(on: forecast.days[selectedDay]) : forecast.next24 }
 
     init(city: City, forecast: Forecast, settings: WeatherSettings, day: Int? = nil, hour: Int = 0) {
@@ -26,6 +29,10 @@ final class ForecastDetailViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "detail")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 160
+        registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (controller: ForecastDetailViewController, _: UITraitCollection) in
+            controller.renderHeader()
+            controller.tableView.reloadData()
+        }
         renderHeader()
     }
     override func viewDidLayoutSubviews() {
@@ -36,6 +43,11 @@ final class ForecastDetailViewController: UITableViewController {
         if abs(header.frame.height - height) > 1 || header.frame.width != tableView.bounds.width {
             header.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: height)
             tableView.tableHeaderView = header
+        }
+        if shouldAlignDay, let scroll = dayScroll, let selectedDayButton, scroll.bounds.width > 0 {
+            shouldAlignDay = false
+            scroll.layoutIfNeeded()
+            scroll.scrollRectToVisible(selectedDayButton.frame.insetBy(dx: -8, dy: 0), animated: false)
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +62,8 @@ final class ForecastDetailViewController: UITableViewController {
         let column = stack([title, zone])
         if dailyMode {
             let scroll = UIScrollView()
+            dayScroll = scroll
+            shouldAlignDay = true
             scroll.showsHorizontalScrollIndicator = false
             let days = stack([], axis: .horizontal)
             days.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +80,7 @@ final class ForecastDetailViewController: UITableViewController {
                 var config = index == selectedDay ? UIButton.Configuration.filled() : .tinted()
                 config.title = WeatherFormat.date(day.time, zone: forecast.timezone, format: "dd.MM EEE")
                 config.baseBackgroundColor = Palette.blue
-                config.baseForegroundColor = index == selectedDay ? .white : Palette.blue
+                config.baseForegroundColor = index == selectedDay ? .white : Palette.accent
                 let button = UIButton(configuration: config, primaryAction: UIAction { [weak self] _ in
                     guard let self else { return }
                     self.selectedDay = index
@@ -75,12 +89,14 @@ final class ForecastDetailViewController: UITableViewController {
                     self.tableView.reloadData()
                 })
                 button.accessibilityIdentifier = "select-day-\(index)"
+                button.accessibilityTraits = index == selectedDay ? [.button, .selected] : [.button]
+                if index == selectedDay { selectedDayButton = button }
                 days.addArrangedSubview(button)
             }
             column.addArrangedSubview(scroll)
         }
         let strip = HourStrip()
-        strip.configure(hours: hours, zone: forecast.timezone, settings: settings)
+        strip.configure(hours: hours, zone: forecast.timezone, settings: settings, selected: selectedHour)
         strip.onSelect = { [weak self] index in
             guard let self else { return }
             self.selectedHour = index

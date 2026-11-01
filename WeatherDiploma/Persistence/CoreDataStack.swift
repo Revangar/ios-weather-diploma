@@ -4,7 +4,11 @@ import Foundation
 /// The container is used exclusively through private queue contexts and their perform blocks.
 final class CoreDataStack: @unchecked Sendable {
     private let container: NSPersistentContainer
-    private init(container: NSPersistentContainer) { self.container = container }
+    private let writer: NSManagedObjectContext
+    private init(container: NSPersistentContainer) {
+        self.container = container
+        writer = container.newBackgroundContext()
+    }
 
     static func make(storeURL: URL? = nil, inMemory: Bool = false) async throws -> CoreDataStack {
         guard let url = Bundle(for: CoreDataStack.self).url(forResource: "WeatherModel", withExtension: "momd"),
@@ -17,14 +21,13 @@ final class CoreDataStack: @unchecked Sendable {
         description.shouldMigrateStoreAutomatically = true
         description.shouldInferMappingModelAutomatically = true
         container.persistentStoreDescriptions = [description]
-        let stack = CoreDataStack(container: container)
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             container.loadPersistentStores { _, error in
                 if let error { continuation.resume(throwing: error) }
                 else { continuation.resume() }
             }
         }
-        return stack
+        return CoreDataStack(container: container)
     }
 
     func cities() async throws -> [City] {
@@ -40,8 +43,9 @@ final class CoreDataStack: @unchecked Sendable {
     }
 
     func saveCities(_ cities: [City]) async throws {
-        let context = container.newBackgroundContext()
+        let context = writer
         try await context.perform {
+            defer { context.reset() }
             for record in try context.fetch(NSFetchRequest<NSManagedObject>(entityName: "CityRecord")) { context.delete(record) }
             let validIDs = Set(cities.map(\.id))
             for record in try context.fetch(NSFetchRequest<NSManagedObject>(entityName: "ForecastRecord")) {
@@ -70,8 +74,15 @@ final class CoreDataStack: @unchecked Sendable {
     }
 
     func save(_ forecast: Forecast, for cityID: String) async throws {
-        let context = container.newBackgroundContext()
+        let context = writer
         try await context.perform {
+            defer { context.reset() }
+            // All city/forecast writes share this private queue; deletion cannot interleave here.
+            // A response completing after deletion must not recreate orphaned forecast data.
+            let cityRequest = NSFetchRequest<NSManagedObject>(entityName: "CityRecord")
+            cityRequest.predicate = NSPredicate(format: "id == %@", cityID)
+            cityRequest.fetchLimit = 1
+            guard try context.count(for: cityRequest) > 0 else { return }
             let request = NSFetchRequest<NSManagedObject>(entityName: "ForecastRecord")
             request.predicate = NSPredicate(format: "cityID == %@", cityID)
             let record = try context.fetch(request).first ?? NSEntityDescription.insertNewObject(forEntityName: "ForecastRecord", into: context)

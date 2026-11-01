@@ -53,20 +53,23 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
         pager.didMove(toParent: self)
         pager.dataSource = self
         pager.delegate = self
+        let fillWidth = pager.view.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor)
+        fillWidth.priority = .defaultHigh
         NSLayoutConstraint.activate([
             heading.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             heading.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             heading.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             pager.view.topAnchor.constraint(equalTo: heading.bottomAnchor, constant: 4),
-            pager.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            pager.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            pager.view.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            pager.view.widthAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.widthAnchor),
+            pager.view.widthAnchor.constraint(lessThanOrEqualToConstant: 760), fillWidth,
             pager.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         empty.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(empty)
         NSLayoutConstraint.activate([
             empty.topAnchor.constraint(equalTo: heading.bottomAnchor), empty.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            empty.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), empty.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            empty.leadingAnchor.constraint(equalTo: pager.view.leadingAnchor), empty.trailingAnchor.constraint(equalTo: pager.view.trailingAnchor)
         ])
         let text = label("Ваш прогноз начинается с города", style: .title2)
         text.textAlignment = .center
@@ -106,13 +109,13 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
             let page = WeatherViewController(city: city, repository: repository, defaults: defaults)
             page.openHours = { [weak self] city, forecast, hour in
                 guard let self else { return }
-                self.navigationController?.pushViewController(ForecastDetailViewController(city: city, forecast: forecast,
-                    settings: .load(self.defaults), hour: hour), animated: true)
+                self.navigationController?.pushViewController(ReadableContainerViewController(ForecastDetailViewController(city: city, forecast: forecast,
+                    settings: .load(self.defaults), hour: hour)), animated: true)
             }
             page.openDay = { [weak self] city, forecast, day in
                 guard let self else { return }
-                self.navigationController?.pushViewController(ForecastDetailViewController(city: city, forecast: forecast,
-                    settings: .load(self.defaults), day: day), animated: true)
+                self.navigationController?.pushViewController(ReadableContainerViewController(ForecastDetailViewController(city: city, forecast: forecast,
+                    settings: .load(self.defaults), day: day)), animated: true)
             }
             return page
         }
@@ -134,7 +137,7 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
     private func updateTitle() {
         title = cities[index].name
         dots.currentPage = index
-        pageLabel.text = "Город \(index + 1) из \(cities.count) · листайте влево и вправо"
+        pageLabel.text = "Город \(index + 1) из \(cities.count)"
         defaults.set(cities[index].id, forKey: "selectedCity")
     }
     @objc private func selectDot() { showPage(dots.currentPage) }
@@ -164,7 +167,7 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
                 if matches.count == 1 { try await self.add(matches[0]) }
                 else { self.choose(matches) }
             } catch is CancellationError { }
-            catch { self.showError(error.localizedDescription) }
+            catch { self.showError(WeatherError.message(for: error)) }
         }
     }
     private func choose(_ cities: [City]) {
@@ -228,7 +231,7 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
             self.cities = updated
             self.rebuild()
         }
-        navigationController?.pushViewController(list, animated: true)
+        navigationController?.pushViewController(ReadableContainerViewController(list), animated: true)
     }
     private func showError(_ message: String) {
         let alert = UIAlertController(title: "Погода", message: message, preferredStyle: .alert)

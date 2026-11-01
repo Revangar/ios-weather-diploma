@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 @testable import WeatherDiploma
 
 final class StubURLProtocol: URLProtocol, @unchecked Sendable {
@@ -134,6 +135,7 @@ final class WeatherDiplomaTests: XCTestCase {
     func testOfflineRefreshPreservesFullCache() async throws {
         let store = try await CoreDataStack.make(inMemory: true)
         let original = try forecast()
+        try await store.saveCities([moscow])
         try await store.save(original, for: moscow.id)
         StubURLProtocol.configure(error: URLError(.notConnectedToInternet))
         let repository = WeatherRepository(store: store, api: WeatherAPIClient(session: StubURLProtocol.session()))
@@ -162,4 +164,88 @@ final class WeatherDiplomaTests: XCTestCase {
         let same = City(id: "geo", name: "Current", country: "", region: "", latitude: 55.751, longitude: 37.621, timezone: "Europe/Moscow")
         XCTAssertTrue(moscow.matches(same))
     }
+    func testReducedAccuracyLocationDoesNotDuplicateCity() {
+        let approximate = City(id: "geo:55.731:37.636", name: "Москва", country: "Россия", region: "Москва",
+                               latitude: 55.7307958, longitude: 37.6361917, timezone: "Europe/Moscow")
+        XCTAssertTrue(moscow.matches(approximate))
+        let other = City(id: "manual-different", name: "Москва", country: "Россия", region: "Москва",
+                         latitude: 55.7307958, longitude: 37.6361917, timezone: "Europe/Moscow")
+        XCTAssertFalse(moscow.matches(other), "Distinct manual results must keep their geographic identity")
+        let far = City(id: "geo:50:37", name: "Москва", country: "Россия", region: "Москва",
+                       latitude: 50, longitude: 37, timezone: "Europe/Moscow")
+        XCTAssertFalse(moscow.matches(far))
+    }
+    func testCancelledRefreshCannotOverwriteCache() async throws {
+        let store = try await CoreDataStack.make(inMemory: true)
+        try await store.saveCities([moscow])
+        let original = try forecast()
+        try await store.save(original, for: moscow.id)
+        let replacement = Forecast(timezone: original.timezone, fetchedAt: original.fetchedAt.addingTimeInterval(3600),
+                                   current: original.current, hours: original.hours, days: original.days)
+        let api = GatedWeatherProvider(response: replacement)
+        let repository = WeatherRepository(store: store, api: api)
+        let city = moscow
+        let request = Task { try await repository.refresh(for: city) }
+        await api.waitForStart()
+        request.cancel()
+        await api.complete() // A non-cooperative provider returns even after cancellation.
+        do { _ = try await request.value; XCTFail("Cancelled response must be rejected") }
+        catch { XCTAssertTrue(error is CancellationError) }
+        let cached = try await store.forecast(for: city.id)
+        XCTAssertEqual(cached, original)
+    }
+    func testLateResponseCannotRecreateDeletedCity() async throws {
+        let store = try await CoreDataStack.make(inMemory: true)
+        try await store.saveCities([moscow])
+        let api = GatedWeatherProvider(response: try forecast())
+        let repository = WeatherRepository(store: store, api: api)
+        let city = moscow
+        let request = Task { try await repository.refresh(for: city) }
+        await api.waitForStart()
+        try await repository.saveCities([])
+        await api.complete()
+        _ = try await request.value
+        let cached = try await store.forecast(for: city.id)
+        let cities = try await store.cities()
+        XCTAssertNil(cached, "A late network response must not recreate deleted forecast records")
+        XCTAssertTrue(cities.isEmpty)
+    }
+    func testForecastNavigationControllersAreReleased() async throws {
+        let value = try forecast()
+        weak var weakDetail: ForecastDetailViewController?
+        weak var weakContainer: ReadableContainerViewController?
+        autoreleasepool {
+            let detail = ForecastDetailViewController(city: moscow, forecast: value, settings: .init(), day: 0)
+            let container = ReadableContainerViewController(detail)
+            container.loadViewIfNeeded()
+            container.view.frame = CGRect(x: 0, y: 0, width: 800, height: 1000)
+            container.view.layoutIfNeeded()
+            weakDetail = detail
+            weakContainer = container
+        }
+        await Task.yield()
+        XCTAssertNil(weakContainer)
+        XCTAssertNil(weakDetail)
+    }
+
+}
+
+
+private actor GatedWeatherProvider: WeatherProviding {
+    private let response: Forecast
+    private var request: CheckedContinuation<Forecast, Never>?
+    private var startWaiters: [CheckedContinuation<Void, Never>] = []
+    init(response: Forecast) { self.response = response }
+    func forecast(for city: City) async throws -> Forecast {
+        await withCheckedContinuation { continuation in
+            request = continuation
+            startWaiters.forEach { $0.resume() }
+            startWaiters.removeAll()
+        }
+    }
+    func waitForStart() async {
+        if request != nil { return }
+        await withCheckedContinuation { startWaiters.append($0) }
+    }
+    func complete() { request?.resume(returning: response); request = nil }
 }

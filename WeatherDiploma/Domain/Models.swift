@@ -10,7 +10,19 @@ struct City: Codable, Sendable, Equatable, Identifiable {
     let timezone: String
     var subtitle: String { [region, country].filter { !$0.isEmpty }.joined(separator: ", ") }
     func matches(_ other: City) -> Bool {
-        id == other.id || (abs(latitude - other.latitude) < 0.01 && abs(longitude - other.longitude) < 0.01)
+        if id == other.id || (abs(latitude - other.latitude) < 0.01 && abs(longitude - other.longitude) < 0.01) { return true }
+        // Reduced-accuracy Core Location can be kilometres away from the geocoded city centre.
+        // Keep distinct manually chosen cities distinct; only reconcile a named local geo result.
+        guard id.hasPrefix("geo:") || other.id.hasPrefix("geo:") else { return false }
+        func normalized(_ value: String) -> String {
+            value.trimmingCharacters(in: .whitespacesAndNewlines).folding(options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "ru_RU"))
+        }
+        guard normalized(name) == normalized(other.name), !country.isEmpty, normalized(country) == normalized(other.country),
+              !region.isEmpty, normalized(region) == normalized(other.region) else { return false }
+        let latitudeDistance = (latitude - other.latitude) * .pi / 180
+        let longitudeDistance = (longitude - other.longitude) * .pi / 180
+        let haversine = pow(sin(latitudeDistance / 2), 2) + cos(latitude * .pi / 180) * cos(other.latitude * .pi / 180) * pow(sin(longitudeDistance / 2), 2)
+        return 6_371_000 * 2 * asin(sqrt(min(1, haversine))) < 10_000
     }
 }
 
@@ -72,6 +84,17 @@ struct Forecast: Codable, Sendable, Equatable {
 }
 
 enum WeatherError: LocalizedError, Equatable {
+    static func message(for error: Error) -> String {
+        if let error = error as? URLError {
+            switch error.code {
+            case .notConnectedToInternet, .networkConnectionLost, .cannotConnectToHost, .cannotFindHost, .dnsLookupFailed:
+                return "Офлайн: нет связи с погодным сервисом. Повторите обновление позже."
+            case .timedOut: return "Время ожидания ответа истекло. Повторите запрос."
+            default: break
+            }
+        }
+        return error.localizedDescription
+    }
     case invalidData, http(Int), emptySearch, invalidQuery, storage(String)
     var errorDescription: String? {
         switch self {

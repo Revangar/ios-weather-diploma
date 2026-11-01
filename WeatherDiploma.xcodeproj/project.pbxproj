@@ -115,6 +115,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = "22FB00A64472E4CD8EF5E2B2";
 		};
+		"FEAB17C869CB7FE714829FDA" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/ReadableContainerViewController.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"99D5F9CB657BB5D3FFD8ADF5" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "FEAB17C869CB7FE714829FDA";
+		};
 		"2251107B0166F5CA0A77F9AA" = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -210,6 +220,7 @@
 				"508A100DCC7F3420276F0212",
 				"1A139980E572EB80870A62C3",
 				"E7A8EAF90360ACCA67FEB054",
+				"99D5F9CB657BB5D3FFD8ADF5",
 				"3EAD026B2757DE70D2DDF379",
 				"D3A23D28DF15178B38199C06",
 				"A5256C40A989FEF9E8043A75",
@@ -433,6 +444,16 @@
 			"productReference" = "4995042D1A368FF5CEBDABAA";
 			"productType" = "com.apple.product-type.bundle.unit-test";
 		};
+		"F3A1116C7C409D3BC83E42A7" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiplomaUITests/LiveReviewUITests.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"7F04F1C85E419474C4A7E2AF" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "F3A1116C7C409D3BC83E42A7";
+		};
 		"62078ED9F525F6606E404B65" = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -447,6 +468,7 @@
 			"isa" = "PBXSourcesBuildPhase";
 			"buildActionMask" = "2147483647";
 			"files" = (
+				"7F04F1C85E419474C4A7E2AF",
 				"0FDC29D844D28519EEC42335",
 			);
 			"runOnlyForDeploymentPostprocessing" = "0";
@@ -573,6 +595,7 @@
 				"925880B255CEF4F958A95B9F",
 				"19927423B05DE176514CFB6B",
 				"22FB00A64472E4CD8EF5E2B2",
+				"FEAB17C869CB7FE714829FDA",
 				"2251107B0166F5CA0A77F9AA",
 				"AC386D29263DF93B8E7B3CEC",
 				"293F6612602E16EA171F2B11",
@@ -581,6 +604,7 @@
 				"54047963404B8BA7441D0932",
 				"1D06A0D76F000E6EDD18DE49",
 				"8D30DCE0C718B0A211B056EA",
+				"F3A1116C7C409D3BC83E42A7",
 				"62078ED9F525F6606E404B65",
 				"FBDC4F23F93125BBEEAE800C",
 			);

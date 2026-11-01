@@ -8,6 +8,7 @@ final class WeatherViewController: UITableViewController {
     private var refreshTask: Task<Void, Never>?
     private var requestID = UUID()
     private var state = "Загрузка сохранённых данных…"
+    private var headerWidth: NSLayoutConstraint?
     private var settings: WeatherSettings { .load(defaults) }
     var openHours: ((City, Forecast, Int) -> Void)?
     var openDay: ((City, Forecast, Int) -> Void)?
@@ -26,13 +27,19 @@ final class WeatherViewController: UITableViewController {
         tableView.register(DailyCell.self, forCellReuseIdentifier: DailyCell.reuseID)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 90
+        tableView.tableFooterView = attribution()
         tableView.accessibilityIdentifier = "weather-table"
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (controller: WeatherViewController, _: UITraitCollection) in
+            controller.render()
+        }
         render()
     }
     override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews(); sizeHeader() }
     override func viewWillAppear(_ animated: Bool) { super.viewWillAppear(animated); render() }
+    override func viewDidAppear(_ animated: Bool) { super.viewDidAppear(animated); start() }
+    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); stop() }
     func start() {
         guard refreshTask == nil else { return }
         let requestID = UUID()
@@ -49,6 +56,7 @@ final class WeatherViewController: UITableViewController {
                     self.state = "Кэш · обновляем из сети…"
                     self.render()
                 }
+                try Task.checkCancellation()
                 self.state = self.forecast == nil ? "Получаем прогноз…" : "Кэш · обновляем из сети…"
                 self.render()
                 let fresh = try await self.repository.refresh(for: self.city)
@@ -59,9 +67,10 @@ final class WeatherViewController: UITableViewController {
             } catch is CancellationError { }
             catch let error as URLError where error.code == .cancelled { }
             catch {
+                guard self.requestID == requestID, !Task.isCancelled else { return }
                 self.state = self.forecast == nil
-                    ? "Не удалось загрузить прогноз. \(error.localizedDescription)"
-                    : "Офлайн · сохранённый прогноз. \(error.localizedDescription)"
+                    ? "Не удалось загрузить прогноз. \(WeatherError.message(for: error))"
+                    : "Сохранённый прогноз · \(WeatherError.message(for: error))"
                 self.render()
             }
         }
@@ -71,9 +80,13 @@ final class WeatherViewController: UITableViewController {
 
     private func render() {
         guard isViewLoaded else { return }
+        tableView.tableFooterView = attribution()
         let status = label(state, style: .caption1, color: .secondaryLabel)
         status.accessibilityIdentifier = "weather-status"
-        let column = stack([label(city.subtitle, style: .subheadline, color: .secondaryLabel), status])
+        let country = label(city.country, style: .caption1, color: .secondaryLabel)
+        country.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        let metadata = stack([country, status], axis: traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? .vertical : .horizontal, spacing: 8)
+        let column = stack([metadata], spacing: 8)
         if let forecast {
             if forecast.isStale {
                 column.addArrangedSubview(label("Данные устарели · \(WeatherFormat.date(forecast.fetchedAt, zone: forecast.timezone, format: "dd.MM HH:mm"))", style: .caption1, color: .systemOrange))
@@ -84,12 +97,14 @@ final class WeatherViewController: UITableViewController {
             details.titleLabel?.font = .preferredFont(forTextStyle: .headline)
             details.titleLabel?.adjustsFontForContentSizeCategory = true
             details.accessibilityIdentifier = "open-hours"
+            details.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
+            details.titleLabel?.numberOfLines = 0
             details.addAction(UIAction { [weak self] _ in
                 guard let self else { return }; self.openHours?(self.city, forecast, 0)
             }, for: .touchUpInside)
             column.addArrangedSubview(details)
             let strip = HourStrip()
-            strip.configure(hours: forecast.next24, zone: forecast.timezone, settings: settings)
+            strip.configure(hours: forecast.next24, zone: forecast.timezone, settings: settings, selected: 0)
             strip.onSelect = { [weak self] index in
                 guard let self else { return }; self.openHours?(self.city, forecast, index)
             }
@@ -97,12 +112,14 @@ final class WeatherViewController: UITableViewController {
             let more = UIButton(type: .system)
             more.setTitle("25 дней ⓘ", for: .normal)
             more.accessibilityIdentifier = "forecast-25"
+            more.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true
             more.addAction(UIAction { [weak self] _ in
                 let alert = UIAlertController(title: "Доступно 7 дней", message: "Open-Meteo предоставляет прогноз максимум на 16 дней. Надёжный 25-дневный прогноз недоступен; приложение показывает только реальные данные на 7 дней.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Понятно", style: .default))
                 self?.present(alert, animated: true)
             }, for: .touchUpInside)
-            let heading = stack([label("Ежедневный прогноз", style: .headline), more], axis: .horizontal)
+            let heading = stack([label("Ежедневный прогноз", style: .headline), more],
+                                axis: traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? .vertical : .horizontal)
             heading.distribution = .fill
             more.setContentHuggingPriority(.required, for: .horizontal)
             column.addArrangedSubview(heading)
@@ -110,7 +127,11 @@ final class WeatherViewController: UITableViewController {
             column.addArrangedSubview(actionButton("Повторить загрузку", id: "retry-weather") { [weak self] in self?.start() })
         }
         let container = UIView()
-        column.pin(in: container, inset: 18)
+        column.pin(in: container, inset: 12)
+        // UITableView sizes its header manually. Keep multiline intrinsic content constrained
+        // during fitting and rotation, including the largest accessibility text sizes.
+        headerWidth = container.widthAnchor.constraint(equalToConstant: max(24, tableView.bounds.width))
+        headerWidth?.isActive = true
         tableView.tableHeaderView = container
         sizeHeader()
         tableView.reloadData()
@@ -122,30 +143,40 @@ final class WeatherViewController: UITableViewController {
         card.backgroundColor = Palette.blue
         card.layer.cornerRadius = 16
         card.clipsToBounds = true
+        card.accessibilityIdentifier = "current-weather-card"
         let icon = UIImageView(image: UIImage(systemName: WeatherCode.symbol(current.code, isDay: current.isDay)))
         icon.tintColor = .systemYellow
         icon.contentMode = .scaleAspectFit
-        icon.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 38).isActive = true
         let temperature = label(settings.temperature(current.temperature), style: .largeTitle, color: .white)
-        temperature.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: .systemFont(ofSize: 52, weight: .medium))
+        temperature.font = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: .systemFont(ofSize: 42, weight: .medium))
         temperature.accessibilityIdentifier = "current-temperature"
         let condition = label(WeatherCode.description(current.code), style: .headline, color: .white)
-        let feels = label("По ощущению \(settings.temperature(current.feelsLike))", style: .subheadline, color: .white)
-        let now = label("\(WeatherFormat.date(Date(), zone: forecast.timezone, format: "EEE, d MMMM")) · \(settings.time(Date(), zone: forecast.timezone))", style: .subheadline, color: .white)
-        let metrics = label("💧 \(WeatherFormat.number(current.humidity, suffix: "%"))   ·   \(WeatherFormat.rain(current.precipitation))\nВетер \(settings.wind(current.wind))", style: .subheadline, color: .white)
-        let column = stack([icon, temperature, condition, feels, metrics, now], spacing: 10)
+        let feels = label("По ощущению \(settings.temperature(current.feelsLike))", style: .caption1, color: .white)
+        let now = label("\(WeatherFormat.date(Date(), zone: forecast.timezone, format: "EEE, d MMMM")) · \(settings.time(Date(), zone: forecast.timezone))", style: .footnote, color: .white)
+        let metrics = label("💧 \(WeatherFormat.number(current.humidity, suffix: "%")) · \(WeatherFormat.rain(current.precipitation)) · Ветер \(settings.wind(current.wind))", style: .footnote, color: .white)
+        metrics.accessibilityLabel = "Влажность \(WeatherFormat.number(current.humidity, suffix: "%")), осадки \(WeatherFormat.rain(current.precipitation)), ветер \(settings.wind(current.wind))"
+        let temperatureRow = stack([UIView(), icon, temperature, UIView()], axis: .horizontal, spacing: 8)
+        temperatureRow.alignment = .center
+        temperatureRow.arrangedSubviews.first!.widthAnchor.constraint(equalTo: temperatureRow.arrangedSubviews.last!.widthAnchor).isActive = true
+        let column = stack([temperatureRow, condition, feels, metrics, now], spacing: 6)
         if let day = forecast.days.first {
             let sunrise = day.sunrise.map { settings.time($0, zone: forecast.timezone) } ?? "—"
             let sunset = day.sunset.map { settings.time($0, zone: forecast.timezone) } ?? "—"
-            column.addArrangedSubview(label("☀︎ ↑ \(sunrise)   ↓ \(sunset)\nСветовой день \(WeatherFormat.duration(day.daylight))", style: .footnote, color: .white))
+            let range = label("\(settings.temperature(day.low)) / \(settings.temperature(day.high))", style: .footnote, color: .white)
+            range.textAlignment = .center
+            column.insertArrangedSubview(range, at: 0)
+            column.addArrangedSubview(label("☀︎ ↑ \(sunrise)   ↓ \(sunset) · Световой день \(WeatherFormat.duration(day.daylight))", style: .caption1, color: .white))
         }
         column.arrangedSubviews.compactMap { $0 as? UILabel }.forEach { $0.textAlignment = .center }
-        column.pin(in: card, inset: 24)
+        column.pin(in: card, inset: 16)
         return card
     }
     private func sizeHeader() {
         guard let header = tableView.tableHeaderView, tableView.bounds.width > 0 else { return }
         let width = tableView.bounds.width
+        headerWidth?.constant = width
         let height = header.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: .required,
                                                    verticalFittingPriority: .fittingSizeLevel).height
         if abs(header.frame.height - height) > 0.5 || header.frame.width != width {
@@ -163,13 +194,14 @@ final class WeatherViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         if let forecast { openDay?(city, forecast, indexPath.row) }
     }
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    private func attribution() -> UIView {
         let button = UIButton(type: .system)
         button.setTitle("Данные: Open-Meteo · CC BY 4.0 · GeoNames", for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .caption2)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.titleLabel?.numberOfLines = 0
         button.addAction(UIAction { _ in UIApplication.shared.open(URL(string: "https://open-meteo.com/")!) }, for: .touchUpInside)
+        button.frame.size.height = UIFontMetrics.default.scaledValue(for: 58)
         return button
     }
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { 58 }
 }
