@@ -2,6 +2,31 @@ import XCTest
 
 @MainActor
 final class WeatherDiplomaUITests: XCTestCase {
+    func testOrdinaryStartupAndRelaunch() throws {
+        try XCTSkipUnless(ProcessInfo.processInfo.environment["WEATHER_REVIEW_NORMAL_STARTUP"] == "1",
+                          "Opt-in ordinary startup inspection preserves the app data")
+        let app = XCUIApplication()
+        app.launchArguments = []
+        app.launchEnvironment = [:]
+        app.terminate()
+        app.launch()
+        XCTAssertTrue(app.buttons["onboarding-skip"].waitForExistence(timeout: 15)
+            || app.buttons["empty-add-city"].exists
+            || app.staticTexts["current-temperature"].firstMatch.exists)
+        screenshot("startup-device-existing")
+        let hierarchy = XCTAttachment(string: app.debugDescription)
+        hierarchy.name = "startup-device-accessibility-hierarchy"
+        hierarchy.lifetime = .keepAlways
+        add(hierarchy)
+        app.terminate()
+        app.launch()
+        let ready = app.buttons["onboarding-skip"].waitForExistence(timeout: 15)
+            || app.buttons["empty-add-city"].exists
+            || app.staticTexts["current-temperature"].firstMatch.exists
+        screenshot("startup-device-relaunch")
+        XCTAssertTrue(ready, "Ordinary startup must display an actionable interface")
+        XCTAssertTrue(app.buttons["onboarding-skip"].isHittable || app.buttons["open-settings"].isHittable)
+    }
     private func launch(_ namespace: String, reset: Bool = true, offline: Bool = false) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchArguments = ["--ui-testing", "--fixture-network"]
@@ -12,7 +37,7 @@ final class WeatherDiplomaUITests: XCTestCase {
         return app
     }
     private func screenshot(_ name: String) {
-        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        let attachment = XCTAttachment(screenshot: XCUIApplication().screenshot())
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)

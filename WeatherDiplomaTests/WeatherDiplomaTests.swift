@@ -164,6 +164,25 @@ final class WeatherDiplomaTests: XCTestCase {
         let same = City(id: "geo", name: "Current", country: "", region: "", latitude: 55.751, longitude: 37.621, timezone: "Europe/Moscow")
         XCTAssertTrue(moscow.matches(same))
     }
+    func testWeatherHeaderFitsWhenPageReceivesAndChangesItsWidth() async throws {
+        let store = try await CoreDataStack.make(inMemory: true)
+        let repository = WeatherRepository(store: store, api: WeatherAPIClient())
+        let name = "WeatherHeaderGeometry.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: name)!
+        defer { defaults.removePersistentDomain(forName: name) }
+        let page = WeatherViewController(city: moscow, repository: repository, defaults: defaults)
+        page.loadViewIfNeeded()
+        for width: CGFloat in [0, 760, 320, 600] {
+            page.view.frame = CGRect(x: 0, y: 0, width: width, height: 800)
+            page.view.setNeedsLayout()
+            page.view.layoutIfNeeded()
+            guard width > 0 else { continue }
+            let header = try XCTUnwrap(page.tableView.tableHeaderView)
+            XCTAssertEqual(header.frame.width, width, accuracy: 0.5)
+            XCTAssertGreaterThan(header.frame.height, 24)
+            XCTAssertTrue(header.frame.height.isFinite)
+        }
+    }
     func testReducedAccuracyLocationDoesNotDuplicateCity() {
         let approximate = City(id: "geo:55.731:37.636", name: "Москва", country: "Россия", region: "Москва",
                                latitude: 55.7307958, longitude: 37.6361917, timezone: "Europe/Moscow")

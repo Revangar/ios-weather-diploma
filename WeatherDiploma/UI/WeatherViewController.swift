@@ -8,7 +8,7 @@ final class WeatherViewController: UITableViewController {
     private var refreshTask: Task<Void, Never>?
     private var requestID = UUID()
     private var state = "Загрузка сохранённых данных…"
-    private var headerWidth: NSLayoutConstraint?
+    private var pendingHeader: UIView?
     private var settings: WeatherSettings { .load(defaults) }
     var openHours: ((City, Forecast, Int) -> Void)?
     var openDay: ((City, Forecast, Int) -> Void)?
@@ -128,11 +128,10 @@ final class WeatherViewController: UITableViewController {
         }
         let container = UIView()
         column.pin(in: container, inset: 12)
-        // UITableView sizes its header manually. Keep multiline intrinsic content constrained
-        // during fitting and rotation, including the largest accessibility text sizes.
-        headerWidth = container.widthAnchor.constraint(equalToConstant: max(24, tableView.bounds.width))
-        headerWidth?.isActive = true
-        tableView.tableHeaderView = container
+        // A page can load before UIPageViewController gives it a nonzero width.
+        // Measure before installing, so UITableView never receives a zero-height header
+        // or a placeholder width that conflicts with its encapsulated layout constraints.
+        pendingHeader = container
         sizeHeader()
         tableView.reloadData()
     }
@@ -174,13 +173,13 @@ final class WeatherViewController: UITableViewController {
         return card
     }
     private func sizeHeader() {
-        guard let header = tableView.tableHeaderView, tableView.bounds.width > 0 else { return }
+        guard let header = pendingHeader ?? tableView.tableHeaderView, tableView.bounds.width > 0 else { return }
         let width = tableView.bounds.width
-        headerWidth?.constant = width
         let height = header.systemLayoutSizeFitting(CGSize(width: width, height: 0), withHorizontalFittingPriority: .required,
                                                    verticalFittingPriority: .fittingSizeLevel).height
-        if abs(header.frame.height - height) > 0.5 || header.frame.width != width {
+        if pendingHeader != nil || abs(header.frame.height - height) > 0.5 || header.frame.width != width {
             header.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            pendingHeader = nil
             tableView.tableHeaderView = header
         }
     }
