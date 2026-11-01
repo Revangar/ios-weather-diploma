@@ -37,7 +37,7 @@ final class WeatherDiplomaUITests: XCTestCase {
         return app
     }
     private func screenshot(_ name: String) {
-        let attachment = XCTAttachment(screenshot: XCUIApplication().screenshot())
+        let attachment = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
@@ -201,6 +201,81 @@ final class WeatherDiplomaUITests: XCTestCase {
             XCTAssertGreaterThanOrEqual(frame.minX, table.minX - 1, "Header extends beyond the leading edge")
             XCTAssertLessThanOrEqual(frame.maxX, table.maxX + 1, "Header extends beyond the trailing edge")
         }
+    }
+    func testLargeTextDetailsAndSettings() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--ui-testing", "--fixture-network", "--reset-test-state",
+                               "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launchEnvironment["WEATHER_TEST_NAMESPACE"] = "adaptive-details"
+        XCUIDevice.shared.orientation = .portrait
+        app.launch()
+        waitForOrientation(app, landscape: false)
+        XCTAssertTrue(app.buttons["onboarding-skip"].waitForExistence(timeout: 10))
+        for _ in 0..<10 where !app.buttons["onboarding-skip"].isHittable { app.scrollViews.firstMatch.swipeUp() }
+        app.buttons["onboarding-skip"].tap()
+        addCity(app, query: "Moscow", country: "Россия")
+        let weather = app.tables["weather-table"].firstMatch
+        for _ in 0..<10 where !app.buttons["open-hours"].isHittable { weather.swipeUp() }
+        app.buttons["open-hours"].tap()
+        let hourly = app.tables["hourly-detail"]
+        XCTAssertTrue(hourly.waitForExistence(timeout: 5))
+        screenshot("17-large-text-hours")
+        for _ in 0..<35 where !app.cells["detail-hour-23"].isHittable { hourly.swipeUp() }
+        XCTAssertTrue(app.cells["detail-hour-23"].isHittable, "All 24 hours remain reachable with large text")
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        for _ in 0..<12 where !app.cells["day-6"].isHittable { weather.swipeUp() }
+        app.cells["day-6"].tap()
+        XCTAssertTrue(app.tables["daily-detail"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["select-day-6"].isHittable)
+        screenshot("18-large-text-day")
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.buttons["open-settings"].tap()
+        XCTAssertTrue(app.segmentedControls["setting-temperature"].waitForExistence(timeout: 5))
+        screenshot("19-large-text-settings")
+        app.segmentedControls["setting-temperature"].buttons["°F"].tap()
+        let time = app.segmentedControls["setting-time"]
+        for _ in 0..<8 where !time.isHittable { app.tables.firstMatch.swipeUp() }
+        time.buttons["12"].tap()
+        XCUIDevice.shared.orientation = .landscapeLeft
+        defer { XCUIDevice.shared.orientation = .portrait }
+        waitForOrientation(app, landscape: true)
+        XCTAssertTrue(app.buttons["apply-settings"].isHittable)
+        screenshot("20-large-text-settings-landscape")
+        app.buttons["apply-settings"].tap()
+        XCTAssertTrue(weather.waitForExistence(timeout: 5))
+    }
+    func testLargeTextEmptyLandscape() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--ui-testing", "--fixture-network", "--reset-test-state",
+                               "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launchEnvironment["WEATHER_TEST_NAMESPACE"] = "adaptive-empty"
+        XCUIDevice.shared.orientation = .portrait
+        app.launch()
+        waitForOrientation(app, landscape: false)
+        XCTAssertTrue(app.buttons["onboarding-skip"].waitForExistence(timeout: 10))
+        for _ in 0..<10 where !app.buttons["onboarding-skip"].isHittable { app.scrollViews.firstMatch.swipeUp() }
+        app.buttons["onboarding-skip"].tap()
+        XCUIDevice.shared.orientation = .landscapeLeft
+        defer { XCUIDevice.shared.orientation = .portrait }
+        waitForOrientation(app, landscape: true)
+        let button = app.buttons["empty-add-city"]
+        XCTAssertTrue(button.waitForExistence(timeout: 5))
+        screenshot("21-large-text-empty-landscape")
+        let scroll = app.scrollViews["empty-city-scroll"]
+        for _ in 0..<10 where (!button.isHittable || button.frame.maxY > app.frame.maxY) && scroll.exists { scroll.swipeUp() }
+        screenshot("22-large-text-empty-action")
+        XCTAssertTrue(button.isHittable, "Manual entry must remain reachable in landscape with large text")
+        XCTAssertGreaterThanOrEqual(button.frame.minY, app.frame.minY)
+        XCTAssertLessThanOrEqual(button.frame.maxY, app.frame.maxY)
+        button.tap()
+        XCTAssertTrue(app.textFields["city-query"].waitForExistence(timeout: 5))
+    }
+    private func waitForOrientation(_ app: XCUIApplication, landscape: Bool) {
+        let orientation = NSPredicate { _, _ in (app.frame.width > app.frame.height) == landscape }
+        let ready = expectation(for: orientation, evaluatedWith: app)
+        wait(for: [ready], timeout: 5)
     }
     func testCityManagementAndLocationFromSettings() {
         let app = launch("management")

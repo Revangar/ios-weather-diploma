@@ -8,7 +8,7 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
     private let pager = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let dots = UIPageControl()
     private let pageLabel = label(style: .caption1, color: .secondaryLabel)
-    private let empty = UIView()
+    private let empty = UIScrollView()
     private var cities: [City] = []
     private var pages: [WeatherViewController] = []
     private var index = 0
@@ -66,6 +66,7 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
             pager.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         empty.translatesAutoresizingMaskIntoConstraints = false
+        empty.accessibilityIdentifier = "empty-city-scroll"
         view.addSubview(empty)
         NSLayoutConstraint.activate([
             empty.topAnchor.constraint(equalTo: heading.bottomAnchor), empty.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -78,11 +79,24 @@ final class WeatherRootViewController: UIViewController, UIPageViewControllerDat
         let button = actionButton("+  Добавить город", id: "empty-add-city") { [weak self] in self?.promptCity() }
         let column = stack([text, note, button], spacing: 22)
         column.translatesAutoresizingMaskIntoConstraints = false
-        empty.addSubview(column)
+        let emptyContent = UIView()
+        emptyContent.translatesAutoresizingMaskIntoConstraints = false
+        empty.addSubview(emptyContent)
+        emptyContent.addSubview(column)
+        let viewportHeight = emptyContent.heightAnchor.constraint(equalTo: empty.frameLayoutGuide.heightAnchor)
+        viewportHeight.priority = .defaultLow
         NSLayoutConstraint.activate([
-            column.centerYAnchor.constraint(equalTo: empty.centerYAnchor),
-            column.leadingAnchor.constraint(equalTo: empty.leadingAnchor, constant: 28),
-            column.trailingAnchor.constraint(equalTo: empty.trailingAnchor, constant: -28)
+            emptyContent.leadingAnchor.constraint(equalTo: empty.contentLayoutGuide.leadingAnchor),
+            emptyContent.trailingAnchor.constraint(equalTo: empty.contentLayoutGuide.trailingAnchor),
+            emptyContent.topAnchor.constraint(equalTo: empty.contentLayoutGuide.topAnchor),
+            emptyContent.bottomAnchor.constraint(equalTo: empty.contentLayoutGuide.bottomAnchor),
+            emptyContent.widthAnchor.constraint(equalTo: empty.frameLayoutGuide.widthAnchor),
+            emptyContent.heightAnchor.constraint(greaterThanOrEqualTo: empty.frameLayoutGuide.heightAnchor), viewportHeight,
+            column.centerYAnchor.constraint(equalTo: emptyContent.centerYAnchor),
+            column.topAnchor.constraint(greaterThanOrEqualTo: emptyContent.topAnchor, constant: 28),
+            column.bottomAnchor.constraint(lessThanOrEqualTo: emptyContent.bottomAnchor, constant: -28),
+            column.leadingAnchor.constraint(equalTo: emptyContent.leadingAnchor, constant: 28),
+            column.trailingAnchor.constraint(equalTo: emptyContent.trailingAnchor, constant: -28)
         ])
         Task { await restore() }
     }

@@ -18,6 +18,10 @@ final class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         view.backgroundColor = Palette.blue
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "setting")
+        tableView.register(AccessibleSettingCell.self, forCellReuseIdentifier: "accessible-setting")
+        registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (controller: SettingsViewController, _: UITraitCollection) in
+            controller.tableView.reloadData()
+        }
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = Palette.blue
@@ -90,6 +94,13 @@ final class SettingsViewController: UITableViewController {
             config.text = indexPath.row == 0 ? "Open-Meteo · CC BY 4.0" : "Геокодинг · GeoNames"
             cell.accessoryType = .disclosureIndicator
         }
+        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory,
+           let control = cell.accessoryView as? UISegmentedControl {
+            cell.accessoryView = nil
+            let accessible = tableView.dequeueReusableCell(withIdentifier: "accessible-setting", for: indexPath) as! AccessibleSettingCell
+            accessible.configure(title: config.text ?? "", control: control)
+            return accessible
+        }
         cell.contentConfiguration = config
         return cell
     }
@@ -129,6 +140,32 @@ final class SettingsViewController: UITableViewController {
         } else if indexPath.section == 2 {
             UIApplication.shared.open(URL(string: indexPath.row == 0 ? "https://open-meteo.com/" : "https://www.geonames.org/")!)
         }
+    }
+}
+
+/// Gives large-text users readable segment titles without squeezing the setting name.
+private final class AccessibleSettingCell: UITableViewCell {
+    private let title = label()
+    private let column = stack([], spacing: 12)
+    private var control: UISegmentedControl?
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        backgroundColor = Palette.card
+        column.addArrangedSubview(title)
+        column.pin(in: contentView, inset: 16)
+    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    func configure(title: String, control: UISegmentedControl) {
+        self.title.text = title
+        self.control?.removeFromSuperview()
+        self.control = control
+        control.apportionsSegmentWidthsByContent = true
+        let font = UIFont.preferredFont(forTextStyle: .body)
+        control.setTitleTextAttributes([.font: font], for: .normal)
+        control.setTitleTextAttributes([.font: font], for: .selected)
+        control.heightAnchor.constraint(greaterThanOrEqualToConstant: font.lineHeight + 16).isActive = true
+        column.addArrangedSubview(control)
     }
 }
 

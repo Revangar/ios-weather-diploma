@@ -37,7 +37,7 @@ xcodebuild -project WeatherDiploma.xcodeproj -scheme WeatherDiploma \
 
 ## Проверки и устройство кода
 
-[Отчёт и матрица требований](docs/VALIDATION.md) · [Архитектура](docs/ARCHITECTURE.md) · [Скриншоты до/после](docs/review-20261101/README.md#скриншоты-до--после)
+[Отчёт и матрица требований](docs/VALIDATION.md) · [Архитектура](docs/ARCHITECTURE.md) · [Контрольное ревью и скриншоты](docs/final-review-20261101-v2/README.md)
 
 `WeatherDiplomaTests` проверяет DTO, null и повреждённые массивы, контракт URL, геокодинг через URLProtocol, ошибки HTTP/офлайн, повторное открытие SQLite, изоляцию городов, настройки и DST. `WeatherDiplomaUITests` выполняет пользовательские сценарии и сохраняет скриншоты в xcresult. UI-транспорт включается только явными DEBUG-аргументами `--ui-testing --fixture-network`, использует отдельные defaults/SQLite и показывает баннер «Тестовые данные». Обычный Debug и Release работают с реальной сетью. `--offline` в тестах — ошибка транспорта `URLError.notConnectedToInternet`, а не выключение сети всего Mac.
 
@@ -45,11 +45,11 @@ xcodebuild -project WeatherDiploma.xcodeproj -scheme WeatherDiploma \
 
 ## Фактический результат на Mac
 
-Финальное ревью 01.11.2026, Xcode 26.6 / iOS Simulator 26.5: Debug и Release **BUILD SUCCEEDED**. На каждом устройстве проверены **16 unit, 6 fixture UI и 2 ordinary integration UI**: живая сеть и настоящий процессный запрет сети с восстановлением кэша. Полные и повторные прогоны, найденные дефекты и ограничения подробно разделены в [отчёте](docs/review-20261101/README.md). Исполнение на iOS 17, физическом устройстве и Release UI не проверялось.
+Контрольное ревью 01.11.2026, Xcode 26.6 / iOS Simulator 26.5: Debug и Release **BUILD SUCCEEDED**. На iPhone и iPad Simulator прошли по **28 тестов: 17 unit и 11 UI**, включая обычные запуски с живой сетью и процессное отключение сети для проверки кэша. [Отчёт, снимки и ограничения](docs/final-review-20261101-v2/README.md). Исполнение на iOS 17/27, физических устройствах и Release UI в этом ревью не проверялось.
 
 | Обычный запуск, живая сеть | iPad, тёмная тема, живая сеть |
 |---|---|
-| <img src="docs/review-20261101/after/iphone-live-04-moscow.png" width="280" alt="Живой прогноз на iPhone"> | <img src="docs/review-20261101/after/ipad-live-04-moscow.png" width="350" alt="Живой прогноз на iPad"> |
+| <img src="docs/final-review-20261101-v2/after/iphone-live-04-moscow.png" width="280" alt="Живой прогноз на iPhone"> | <img src="docs/final-review-20261101-v2/after/ipad-live-04-moscow.png" width="350" alt="Живой прогноз на iPad"> |
 
 [PR для проверки диплома #1](https://github.com/Revangar/ios-weather-diploma/pull/1) — открыт, не мержен.
 
