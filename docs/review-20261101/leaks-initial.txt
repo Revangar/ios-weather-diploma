@@ -1,0 +1,28 @@
+Process 9007 is not debuggable. Due to security restrictions, leaks can only show or save contents of readonly memory of restricted processes.
+
+Process:         WeatherDiploma [9007]
+Path:            /Users/incar/Library/Developer/CoreSimulator/Devices/F756165E-B169-4486-BC43-93D8C72903F7/data/Containers/Bundle/Application/482AE76D-A115-44EA-BAAC-350C62CE956B/WeatherDiploma.app/WeatherDiploma
+Load Address:    0x1045c8000
+Identifier:      com.revangar.WeatherDiploma
+Version:         1.0 (1)
+Code Type:       ARM64
+Platform:        iOS Simulator
+Parent Process:  launchd_sim [5234]
+Target Type:     corpse
+
+Date/Time:       2026-11-01 03:18:25.032 +0300
+Launch Time:     2026-11-01 03:17:57.345 +0300
+OS Version:      macOS 26.4.1 (25E253)
+Report Version:  7
+Analysis Tool:   /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/usr/bin/leaks
+Analysis Tool Version:  iOS Simulator 26.5 (23F77)
+
+Physical footprint:         46.0M
+Physical footprint (peak):  48.9M
+Idle exit:                  untracked
+----
+
+leaks Report Version: 4.0
+Process 9007: 92433 nodes malloced for 12643 KB
+Process 9007: 0 leaks for 0 total leaked bytes.
+

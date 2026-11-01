@@ -37,7 +37,7 @@ xcodebuild -project WeatherDiploma.xcodeproj -scheme WeatherDiploma \
 
 ## Проверки и устройство кода
 
-[Отчёт и матрица требований](docs/VALIDATION.md) · [Архитектура](docs/ARCHITECTURE.md) · [Скриншоты](docs/evidence/)
+[Отчёт и матрица требований](docs/VALIDATION.md) · [Архитектура](docs/ARCHITECTURE.md) · [Скриншоты до/после](docs/review-20261101/README.md#скриншоты-до--после)
 
 `WeatherDiplomaTests` проверяет DTO, null и повреждённые массивы, контракт URL, геокодинг через URLProtocol, ошибки HTTP/офлайн, повторное открытие SQLite, изоляцию городов, настройки и DST. `WeatherDiplomaUITests` выполняет пользовательские сценарии и сохраняет скриншоты в xcresult. UI-транспорт включается только явными DEBUG-аргументами `--ui-testing --fixture-network`, использует отдельные defaults/SQLite и показывает баннер «Тестовые данные». Обычный Debug и Release работают с реальной сетью. `--offline` в тестах — ошибка транспорта `URLError.notConnectedToInternet`, а не выключение сети всего Mac.
 
@@ -45,10 +45,12 @@ xcodebuild -project WeatherDiploma.xcodeproj -scheme WeatherDiploma \
 
 ## Фактический результат на Mac
 
-Xcode 26.6 / iOS Simulator 26.5: Debug и Release **BUILD SUCCEEDED**; **12 unit**, **6 различных iPhone UI** и **2 iPad UI** прошли без ошибок (некоторые UI-кейсы повторены после правок). Исполнение на iOS 17 и физическом устройстве не проверялось.
+Финальное ревью 01.11.2026, Xcode 26.6 / iOS Simulator 26.5: Debug и Release **BUILD SUCCEEDED**. На каждом устройстве проверены **16 unit, 6 fixture UI и 2 ordinary integration UI**: живая сеть и настоящий процессный запрет сети с восстановлением кэша. Полные и повторные прогоны, найденные дефекты и ограничения подробно разделены в [отчёте](docs/review-20261101/README.md). Исполнение на iOS 17, физическом устройстве и Release UI не проверялось.
 
-| Обычный запуск, живая сеть | iPad, тёмная тема, тестовый транспорт |
+| Обычный запуск, живая сеть | iPad, тёмная тема, живая сеть |
 |---|---|
-| <img src="docs/evidence/iphone-live-weather.png" width="280" alt="Живой прогноз на iPhone"> | <img src="docs/evidence/ipad-03-weather-moscow.png" width="350" alt="iPad dark UI test"> |
+| <img src="docs/review-20261101/after/iphone-live-04-moscow.png" width="280" alt="Живой прогноз на iPhone"> | <img src="docs/review-20261101/after/ipad-live-04-moscow.png" width="350" alt="Живой прогноз на iPad"> |
 
 [PR для проверки диплома #1](https://github.com/Revangar/ios-weather-diploma/pull/1) — открыт, не мержен.
+
+Обычные сетевые `LiveReviewUITests` запускаются только при opt-in `TEST_RUNNER_WEATHER_RUN_LIVE_REVIEW=1` на отдельном review-устройстве. Без переменной они SKIPPED; обычная команда `test` выполняет unit и fixture UI без изменения пользовательского профиля. Для процессного offline-кейса дополнительно требуется внешний [диагностический harness](docs/review-20261101/diagnostics/README.md), не входящий в приложение.

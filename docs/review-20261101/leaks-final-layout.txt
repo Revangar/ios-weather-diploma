@@ -1,0 +1,27 @@
+leaks[26168]: --nocontext is deprecated, use --noContent instead
+Process:         WeatherDiploma [25857]
+Path:            /Users/incar/Library/Developer/CoreSimulator/Devices/F756165E-B169-4486-BC43-93D8C72903F7/data/Containers/Bundle/Application/AC200470-7E0E-435C-A199-A07337F18C8B/WeatherDiploma.app/WeatherDiploma
+Load Address:    0x102bb4000
+Identifier:      com.revangar.WeatherDiploma
+Version:         1.0 (1)
+Code Type:       ARM64
+Platform:        iOS Simulator
+Parent Process:  launchd_sim [5234]
+Target Type:     corpse
+
+Date/Time:       2026-11-01 04:06:52.411 +0300
+Launch Time:     2026-11-01 04:06:30.145 +0300
+OS Version:      iPhone OS 26.5 (23F77)
+Report Version:  7
+Analysis Tool:   /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/usr/bin/leaks
+Analysis Tool Version:  iOS Simulator 26.5 (23F77)
+
+Physical footprint:         26.4M
+Physical footprint (peak):  30.7M
+Idle exit:                  untracked
+----
+
+leaks Report Version: 4.0
+Process 25857: 61627 nodes malloced for 9808 KB
+Process 25857: 0 leaks for 0 total leaked bytes.
+
