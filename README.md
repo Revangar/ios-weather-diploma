@@ -54,3 +54,5 @@ xcodebuild -project WeatherDiploma.xcodeproj -scheme WeatherDiploma \
 [PR для проверки диплома #1](https://github.com/Revangar/ios-weather-diploma/pull/1) — открыт, не мержен.
 
 Обычные сетевые `LiveReviewUITests` запускаются только при opt-in `TEST_RUNNER_WEATHER_RUN_LIVE_REVIEW=1` на отдельном review-устройстве. Без переменной они SKIPPED; обычная команда `test` выполняет unit и fixture UI без изменения пользовательского профиля. Для процессного offline-кейса дополнительно требуется внешний [диагностический harness](docs/review-20261101/diagnostics/README.md), не входящий в приложение.
+
+Дополнительный патч запуска удаляет конфликт обязательной ширины заголовка погоды при нулевой начальной ширине страницы. [Отчёт Simulator и границы вывода о синем экране](docs/startup-ipad-20261101/README.md). Обычный startup-тест opt-in: `TEST_RUNNER_WEATHER_REVIEW_NORMAL_STARTUP=1`; приложение запускается без fixture-аргументов и без очистки данных.

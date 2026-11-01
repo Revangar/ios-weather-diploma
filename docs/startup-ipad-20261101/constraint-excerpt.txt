@@ -1,0 +1,13 @@
+Краткая выдержка из ранее полученного runtime-журнала; адреса объектов удалены.
+Unable to simultaneously satisfy constraints.
+UIView.width == 24 (active)
+'UIView-Encapsulated-Layout-Width' UIView.width == 760 (active)
+'UIView-Encapsulated-Layout-Height' UIView.height == 0 (active)
+UIStackView.leading == UIView.leading + 12
+UIStackView.trailing == UIView.trailing - 12
+UIStackView.top == UIView.top + 12
+UIStackView.bottom == UIView.bottom - 12
+Will attempt to recover by breaking constraint ...
+
+Это подтверждает конфликт заголовка погоды, но не устанавливает причину
+заявленного постоянного пустого синего экрана.
