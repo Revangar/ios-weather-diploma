@@ -1,4 +1,6 @@
 import UIKit
+import SwiftUI
+import Charts
 
 final class ForecastDetailViewController: UITableViewController {
     private let city: City
@@ -27,6 +29,7 @@ final class ForecastDetailViewController: UITableViewController {
         super.viewDidLoad()
         tableView.accessibilityIdentifier = dailyMode ? "daily-detail" : "hourly-detail"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "detail")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "charts")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 160
         registerForTraitChanges([UITraitPreferredContentSizeCategory.self]) { (controller: ForecastDetailViewController, _: UITraitCollection) in
@@ -53,7 +56,7 @@ final class ForecastDetailViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !dailyMode && selectedHour > 0 && hours.indices.contains(selectedHour) {
-            tableView.scrollToRow(at: IndexPath(row: selectedHour, section: 0), at: .middle, animated: false)
+            tableView.scrollToRow(at: IndexPath(row: selectedHour, section: 1), at: .middle, animated: false)
         }
     }
     private func renderHeader() {
@@ -102,7 +105,7 @@ final class ForecastDetailViewController: UITableViewController {
             self.selectedHour = index
             self.tableView.reloadData()
             let row = self.dailyMode ? index + 3 : index
-            self.tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .middle, animated: true)
+            self.tableView.scrollToRow(at: IndexPath(row: row, section: 1), at: .middle, animated: true)
         }
         column.addArrangedSubview(strip)
         let container = UIView()
@@ -110,8 +113,29 @@ final class ForecastDetailViewController: UITableViewController {
         tableView.tableHeaderView = container
         view.setNeedsLayout()
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { hours.count + (dailyMode ? 3 : 0) }
+    override func numberOfSections(in tableView: UITableView) -> Int { 2 }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        section == 0 ? 1 : hours.count + (dailyMode ? 3 : 0)
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "charts", for: indexPath)
+            cell.selectionStyle = .none
+            cell.backgroundColor = .clear
+            cell.contentConfiguration = UIHostingConfiguration {
+                HourlyForecastCharts(
+                    hours: hours,
+                    timeZone: forecast.timezone,
+                    settings: settings
+                )
+            }
+            .margins(.all, 8)
+            cell.accessibilityIdentifier = "forecast-charts"
+            return cell
+        }
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
         var config = cell.defaultContentConfiguration()
         config.textProperties.numberOfLines = 0
@@ -156,5 +180,116 @@ final class ForecastDetailViewController: UITableViewController {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(identifier: forecast.timezone) ?? .gmt
         return calendar.component(.hour, from: date)
+    }
+}
+
+
+// MARK: - Swift Charts hosted in the existing UIKit table view
+
+private struct HourlyChartSample: Identifiable {
+    let time: Date
+    let value: Double
+    var id: Date { time }
+}
+
+private struct HourlyForecastCharts: View {
+    let hours: [HourWeather]
+    let timeZone: String
+    let settings: WeatherSettings
+
+    private var temperatureSeries: [HourlyChartSample] {
+        hours.compactMap { hour in
+            guard let temperature = hour.temperature, temperature.isFinite else { return nil }
+            return HourlyChartSample(
+                time: hour.time,
+                value: settings.fahrenheit ? temperature * 1.8 + 32 : temperature
+            )
+        }
+    }
+
+    private var precipitationSeries: [HourlyChartSample] {
+        hours.compactMap { hour in
+            guard let probability = hour.probability, probability.isFinite else { return nil }
+            return HourlyChartSample(
+                time: hour.time,
+                value: min(100, max(0, probability))
+            )
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            if !temperatureSeries.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Температура · " + (settings.fahrenheit ? "°F" : "°C"))
+                        .font(.headline)
+                    Chart(temperatureSeries) { sample in
+                        LineMark(
+                            x: .value("Время", sample.time),
+                            y: .value("Температура", sample.value)
+                        )
+                        .interpolationMethod(.catmullRom)
+                        .foregroundStyle(Color(uiColor: Palette.accent))
+                    }
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .hour, count: 4)) { _ in
+                            AxisGridLine()
+                            AxisValueLabel(format: .dateTime.hour().minute())
+                        }
+                    }
+                    .chartYAxis {
+                        AxisMarks(position: .leading) {
+                            AxisGridLine()
+                            AxisValueLabel()
+                        }
+                    }
+                    .frame(height: 160)
+                    .accessibilityIdentifier("temperature-chart")
+                    .accessibilityLabel("График температуры по часам")
+                }
+            }
+
+            if !precipitationSeries.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Вероятность осадков · %")
+                        .font(.headline)
+                    Chart(precipitationSeries) { sample in
+                        BarMark(
+                            x: .value("Время", sample.time),
+                            y: .value("Вероятность осадков", sample.value)
+                        )
+                        .foregroundStyle(Color(uiColor: Palette.accent).opacity(0.8))
+                    }
+                    .chartYScale(domain: 0.0...100.0)
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .hour, count: 4)) { _ in
+                            AxisGridLine()
+                            AxisValueLabel(format: .dateTime.hour().minute())
+                        }
+                    }
+                    .chartYAxis {
+                        AxisMarks(position: .leading, values: [0, 25, 50, 75, 100]) {
+                            AxisGridLine()
+                            AxisValueLabel()
+                        }
+                    }
+                    .frame(height: 115)
+                    .accessibilityIdentifier("precipitation-chart")
+                    .accessibilityLabel("График вероятности осадков по часам")
+                }
+            }
+
+            if temperatureSeries.isEmpty && precipitationSeries.isEmpty {
+                Text("Нет данных для графиков")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(uiColor: Palette.card), in: RoundedRectangle(cornerRadius: 12))
+        .environment(\.locale, Locale(identifier: "ru_RU"))
+        .environment(\.timeZone, TimeZone(identifier: timeZone) ?? .gmt)
     }
 }
