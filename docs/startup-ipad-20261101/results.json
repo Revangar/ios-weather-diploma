@@ -1,0 +1,260 @@
+{
+  "date": "2026-11-01",
+  "scope": "Simulator only in final acceptance",
+  "runtime": "iOS Simulator 26.5 (existing installation)",
+  "xcode": "26.6 (17F113)",
+  "baseCommit": "3ff71d2edd2148e578d00a7ab849b6f7ad2c2c2c",
+  "implementationCommit": "b974320abfbf2a5b1fb8b6959c4b2976c4e41df6",
+  "originalPersistentBlueScreenCause": "NOT_ESTABLISHED; not consistently reproduced",
+  "confirmedFixedDefect": "UITableView header required width 24 conflicts with encapsulated width 760 / initial height 0",
+  "builds": {
+    "simulator-debug-build": {
+      "log": "outputs/startup-ipad-20261101/simulator-debug-build.log",
+      "sha256": "99e74cc257ea7324d17f7dc4635f3f5dff5df9d9dca97d1b43a226384b932288",
+      "success": true
+    },
+    "simulator-release-build": {
+      "log": "outputs/startup-ipad-20261101/simulator-release-build.log",
+      "sha256": "f7264978e096235a4ac50ba5961a03a09f69607af821f772dccb119a788fd21a",
+      "success": true
+    },
+    "simulator-final-source-build": {
+      "log": "outputs/startup-ipad-20261101/simulator-final-source-build.log",
+      "sha256": "bc8a80e34d0fbfd16c5e84fc0451725a41d378f2dd0772c2a00d26b45dea8cf2",
+      "success": true
+    }
+  },
+  "sessions": {
+    "simulator-accepted-ipad": {
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "70105150-F630-4EC8-BD71-ED3C0150031D",
+              "deviceName": "WeatherDiploma Startup iPad 13",
+              "modelName": "iPad Pro 13-inch (M5) (16GB)",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 24,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "WeatherDiploma · Built with macOS 26.4.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793537745.847,
+        "passedTests": 24,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1793537553.084,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - WeatherDiploma",
+        "topInsights": [
+          {
+            "category": "Longest Test Runs",
+            "impact": "49% of duration",
+            "text": "1 longest test run with outlier durations exceeding 0.12s (three standard deviations)"
+          }
+        ],
+        "totalTestCount": 24
+      },
+      "log": "outputs/startup-ipad-20261101/simulator-accepted-ipad.log",
+      "logSHA256": "a36e158a963f2d1a58b25ebe89a0fa939989dba17c255a7c39ae378fa0261430"
+    },
+    "simulator-accepted-iphone": {
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "F756165E-B169-4486-BC43-93D8C72903F7",
+              "deviceName": "WeatherDiploma Review iPhone",
+              "modelName": "iPhone 17 Pro",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 24,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "WeatherDiploma · Built with macOS 26.4.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793537780.914,
+        "passedTests": 24,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1793537553.063,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - WeatherDiploma",
+        "topInsights": [
+          {
+            "category": "Longest Test Runs",
+            "impact": "55% of duration",
+            "text": "1 longest test run with outlier durations exceeding 0.15s (three standard deviations)"
+          }
+        ],
+        "totalTestCount": 24
+      },
+      "log": "outputs/startup-ipad-20261101/simulator-accepted-iphone.log",
+      "logSHA256": "834fd59000b7943c58311708613a49186c6726c2d1ac4bdcb5a28dd32a6adcf0"
+    },
+    "ipad-final": {
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "70105150-F630-4EC8-BD71-ED3C0150031D",
+              "deviceName": "WeatherDiploma Startup iPad 13",
+              "modelName": "iPad Pro 13-inch (M5) (16GB)",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 23,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "WeatherDiploma · Built with macOS 26.4.1",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1793537021.784,
+        "passedTests": 23,
+        "result": "Failed",
+        "skippedTests": 0,
+        "startTime": 1793536750.092,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertTrue failed",
+            "targetName": "WeatherDiplomaUITests",
+            "testIdentifier": 21,
+            "testIdentifierString": "WeatherDiplomaUITests/testLocationPermissionAllowed()",
+            "testIdentifierURL": "test://com.apple.xcode/WeatherDiploma/WeatherDiplomaUITests/WeatherDiplomaUITests/testLocationPermissionAllowed",
+            "testName": "testLocationPermissionAllowed()"
+          }
+        ],
+        "title": "Test - WeatherDiploma",
+        "topInsights": [],
+        "totalTestCount": 24
+      },
+      "log": "outputs/startup-ipad-20261101/ipad-final-test.log",
+      "logSHA256": "aa3c4ac85724b5a452ebd5c935a82d792e503c9680ca921e4a06a051d9a29fe0"
+    },
+    "ipad-location-corrected": {
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "70105150-F630-4EC8-BD71-ED3C0150031D",
+              "deviceName": "WeatherDiploma Startup iPad 13",
+              "modelName": "iPad Pro 13-inch (M5) (16GB)",
+              "osBuildNumber": "23F77",
+              "osVersion": "26.5",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "WeatherDiploma · Built with macOS 26.4.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1793537138.239,
+        "passedTests": 1,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1793537122.715,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - WeatherDiploma",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "log": "outputs/startup-ipad-20261101/ipad-location-corrected.log",
+      "logSHA256": "f4670c0d3d68f4c5fabf17142141ff26320fc50b81a96149d42f296c5e73cf46"
+    }
+  },
+  "sourceSHA256": {
+    "WeatherDiploma/.DS_Store": "e60f8512eafb20438f1af7a9be4d5c1006b1e184ae7420b09de0566bead8dda6",
+    "WeatherDiploma/UI/WeatherRootViewController.swift": "75e93f6003c8efc46fb29184c7ed05bf8c2ebd592cedc14838053256a9ee5d64",
+    "WeatherDiploma/UI/ForecastDetailViewController.swift": "a7048b09fe45d61394f31812a89f78a8916d05d4e856f998a518368b2ce1fc4a",
+    "WeatherDiploma/UI/WeatherViewController.swift": "2549569a1ed2a4f9751b7995091182f1d18d6fca32db4bc5550410f8ddf1ca81",
+    "WeatherDiploma/UI/ReadableContainerViewController.swift": "20f6b0a38802f33fc310a22ac794ac5b841c59fd85789f280964b5b3d1f15b8c",
+    "WeatherDiploma/UI/OnboardingViewController.swift": "7cb32b1d885479967f22a84ac0e775ce952a002019847b151fe2817bd94dbc02",
+    "WeatherDiploma/UI/Components.swift": "227efb39676a52e3391f472dc52c247c3e4673d424b4da56cb1e37c18e0d4a8c",
+    "WeatherDiploma/UI/SettingsViewController.swift": "d7f6d93f6be0d54d4d9490d10348eb57840d78aed5833728fa2b4e9f6c164045",
+    "WeatherDiploma/App/DebugNetwork.swift": "d74eb5690e4c9c3a436dce6e1f959063f8e88eea7aa7a9ec700f62fa91b77fc0",
+    "WeatherDiploma/App/AppDelegate.swift": "80db1c39ebb821477e960c59e95d8167c6b17edb70048ddfb39161e4ec403b68",
+    "WeatherDiploma/Resources/PrivacyInfo.xcprivacy": "8f77e96341fa6cb4f1ce76bad84e8fa35449ca6db4f33bb0e1cfd035ee935c02",
+    "WeatherDiploma/Resources/Info.plist": "50c01cd7621760f0af5a0787037c23f4bcc15fc7511ec48249f42457f81cad00",
+    "WeatherDiploma/Persistence/CoreDataStack.swift": "d565b6b114ed7e0e3971f3f0b644787b0deb9ec4201cb2c0f66034c641ad46ea",
+    "WeatherDiploma/Persistence/WeatherRepository.swift": "dea62542d7f2a795fcee12b72d9ec105c8d76f4372a817f9eaa91e1f3c8bfefb",
+    "WeatherDiploma/Domain/Models.swift": "0891cfb323bb77c78b6ea5fe69fe4125f38558b8ea6017cdc3919ab88ef46f67",
+    "WeatherDiploma/Services/WeatherAPIClient.swift": "7104e6a13fbbae3fd5cf4e294e755d3d7ed4b365977d2b8f859d33fa93f5043a",
+    "WeatherDiploma/Services/GeocodingService.swift": "4be2444e38b4cd64d8615d776c67bc52322e537ded56b58310d3da3f8a8015be",
+    "WeatherDiploma/Services/LocationService.swift": "b713f5027f122cebd5f82085628137bb32bd5a5f02b7a6f7679c8295716ad814",
+    "WeatherDiploma/Resources/Assets.xcassets/Contents.json": "10e3b5dc202f1cd9fad1f688c8fc9fe9e9669bf3f8295e67d216b10fd99b6f49",
+    "WeatherDiploma/Resources/Fixtures/forecast-fixture.json": "ca1d223606b1b6b5f7e48b0476655a239e88d202fa93b16cf439865c4b5c36eb",
+    "WeatherDiploma/Resources/WeatherModel.xcdatamodeld/WeatherModel.xcdatamodel/contents": "5fdf3fcf341166c27570cc30a1f292cc5050648a3dbab53f15ee3a351e19e3e9",
+    "WeatherDiploma/Resources/Assets.xcassets/LaunchBackground.colorset/Contents.json": "4903316838f18b6909bdc049bbbccdf9e080f6ca3a3d37fdb3c6b82a1c5ae96f",
+    "WeatherDiploma/Resources/Assets.xcassets/AppIcon.appiconset/Contents.json": "6ad2c5c3bbcf972c7f02d217d6afcac3f24a10e30510c7e2d06c582371ed9d22",
+    "WeatherDiploma/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png": "21732f7fb04677779d5167292f05a21ca0343c320fe98ac86456f7bea9e224cc",
+    "WeatherDiplomaTests/WeatherDiplomaTests.swift": "b7807615e17f98b29c8344ca41c280d2abd32f05d1687bc3892df585f0a931d7",
+    "WeatherDiplomaUITests/WeatherDiplomaUITests.swift": "1f5b0c2e584a5a66275b2db6859d9d273628279f1b753e932b98ad2ee9d400cf",
+    "WeatherDiplomaUITests/LiveReviewUITests.swift": "1bab50d4bc41257b8a0bfd7231848ac4db98982f7c0bbf3ddb69220d12e84cc5"
+  },
+  "screenshotsSHA256": {
+    "iphone-13-accessibility-portrait.png": "27a0fcefbd061ff244211bca5df63bd6a61d0df62e61162139e14eb5871619d5",
+    "ipad-ordinary-repeat.png": "3542ea7edae226b0f8eb0508d42e018f6353c25289617cd2827acbd025a911d4",
+    "ipad-12-location-allowed.png": "aa8be280326b907aff108931a1c1ef76443f55ff9feb0711d91ec15d85b3b71d",
+    "ipad-01-onboarding.png": "1f8425f0aa6c027d46f8c198bc4649a2d12b9e12cbca60c97bc2282a7aa72db9",
+    "ipad-11-location-denied.png": "6a774fcb8427d58a4245214bf0b9e0d39c0063ef82805c18d3a4df58c31bab7f",
+    "ipad-14-accessibility-landscape.png": "052085066893ff0e802bbe63c293f4e15dab3d8dfd84379aa7da79867d2e31ad",
+    "ipad-ordinary-first.png": "3542ea7edae226b0f8eb0508d42e018f6353c25289617cd2827acbd025a911d4",
+    "ipad-13-accessibility-portrait.png": "2cbb62f59471d637aa09c93005781ac869a083548153b81e502b0a93f82bd530",
+    "iphone-ordinary-repeat.png": "aead55365ccb0208d48d6c5d96e041df7cbe6cab496efd3422e691f536d3dc92",
+    "iphone-11-location-denied.png": "d33a990530a4b89c85acbb08081b96583dbb91ba29080dd85dee3417134ffa24",
+    "iphone-14-accessibility-landscape.png": "356c27aeae4c23a7f68d4a5c79122448fa07d06f87f387610e8a0120f4167224",
+    "iphone-ordinary-first.png": "72e5b1e670c7317964fc0c982ae04da57e222b3fee332d9b4475313789afb907",
+    "iphone-01-onboarding.png": "196196a5386e437fcd3301abf5ae43a9bb3573dd05cb8e2f20eb3b2a5cc3583d",
+    "iphone-12-location-allowed.png": "daf053263a6c2135acec3dbbc41f38e6124ce64a096e96ba9e9ff8deac5a16e1"
+  },
+  "notRun": [
+    "Final physical-device acceptance after Simulator-only scope",
+    "iOS 27 Simulator",
+    "Release UI"
+  ]
+}

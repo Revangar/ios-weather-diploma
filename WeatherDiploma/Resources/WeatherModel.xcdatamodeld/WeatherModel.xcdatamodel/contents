@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
+    <entity name="CityRecord" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" attributeType="String"/>
+        <attribute name="payload" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="position" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <uniquenessConstraints><uniquenessConstraint><constraint value="id"/></uniquenessConstraint></uniquenessConstraints>
+    </entity>
+    <entity name="ForecastRecord" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="cityID" attributeType="String"/>
+        <attribute name="payload" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="fetchedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <uniquenessConstraints><uniquenessConstraint><constraint value="cityID"/></uniquenessConstraint></uniquenessConstraints>
+    </entity>
+</model>

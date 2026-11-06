@@ -1,0 +1,7 @@
+Starting recording with the Animation Hitches template. Attaching to: Погода (18109). Time limit: 15.0 s
+Ctrl-C to stop the recording
+Run issues were detected (trace is still ready to be viewed):
+* [Error] Hitches is not supported on this platform.
+
+Recording failed with errors. Saving output file...
+Output file saved as: animation-hitches-device.trace

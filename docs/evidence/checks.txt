@@ -1,0 +1,55 @@
+build-debug-final.log
+** BUILD SUCCEEDED **
+
+build-release-final.log
+** BUILD SUCCEEDED **
+
+iphone-tests-final.log
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.069 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.006 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.004 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.002 seconds).
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.099 (0.103) seconds
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.099 (0.103) seconds
+	 Executed 12 tests, with 0 failures (0 unexpected) in 0.099 (0.104) seconds
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (37.976 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (53.280 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionAllowed]' passed (11.655 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionDeniedKeepsManualEntry]' passed (11.817 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testNonexistentDuplicateAndOfflineWithoutCache]' passed (39.949 seconds).
+	 Executed 5 tests, with 0 failures (0 unexpected) in 154.677 (154.683) seconds
+	 Executed 5 tests, with 0 failures (0 unexpected) in 154.677 (154.685) seconds
+	 Executed 5 tests, with 0 failures (0 unexpected) in 154.677 (154.689) seconds
+** TEST SUCCEEDED **
+
+iphone-management.log
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (51.726 seconds).
+** TEST SUCCEEDED **
+
+iphone-management-verified.log
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCityManagementAndLocationFromSettings]' passed (31.238 seconds).
+** TEST EXECUTE SUCCEEDED **
+
+ipad-tests-final.log
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (28.612 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (54.912 seconds).
+	 Executed 2 tests, with 0 failures (0 unexpected) in 83.524 (83.528) seconds
+	 Executed 2 tests, with 0 failures (0 unexpected) in 83.524 (83.529) seconds
+	 Executed 2 tests, with 0 failures (0 unexpected) in 83.524 (83.530) seconds
+** TEST EXECUTE SUCCEEDED **
+
+live-api.log
+PASS Москва: timezone=Europe/Moscow days=7 hours=168 next24=24 temperature=11.1
+PASS Берлин: timezone=Europe/Berlin days=7 hours=168 next24=24 temperature=9.0
+
+iphone-adaptive-final.log
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (31.860 seconds).
+** TEST EXECUTE SUCCEEDED **

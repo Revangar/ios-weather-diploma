@@ -1,0 +1,45 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "70105150-F630-4EC8-BD71-ED3C0150031D",
+        "deviceName": "WeatherDiploma Startup iPad 13",
+        "modelName": "iPad Pro 13-inch (M5) (16GB)",
+        "osBuildNumber": "23F77",
+        "osVersion": "26.5",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 23,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "WeatherDiploma · Built with macOS 26.4.1",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1793537021.784,
+  "passedTests": 23,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1793536750.092,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertTrue failed",
+      "targetName": "WeatherDiplomaUITests",
+      "testIdentifier": 21,
+      "testIdentifierString": "WeatherDiplomaUITests/testLocationPermissionAllowed()",
+      "testIdentifierURL": "test://com.apple.xcode/WeatherDiploma/WeatherDiplomaUITests/WeatherDiplomaUITests/testLocationPermissionAllowed",
+      "testName": "testLocationPermissionAllowed()"
+    }
+  ],
+  "title": "Test - WeatherDiploma",
+  "topInsights": [],
+  "totalTestCount": 24
+}

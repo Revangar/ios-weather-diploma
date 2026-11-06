@@ -1,0 +1,216 @@
+review-before-iphone: Passed, passed=1, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (118.651 seconds).
+review-before-ipad: Passed, passed=1, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (106.303 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-final-iphone: Passed, passed=23, failed=0, skipped=0
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCancelledRefreshCannotOverwriteCache]' passed (0.103 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.019 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastNavigationControllersAreReleased]' passed (0.062 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testLateResponseCannotRecreateDeletedCity]' passed (0.006 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.007 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testReducedAccuracyLocationDoesNotDuplicateCity]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.006 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (90.033 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (30.732 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (50.475 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCityManagementAndLocationFromSettings]' passed (32.082 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionAllowed]' passed (14.683 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionDeniedKeepsManualEntry]' passed (12.174 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testNonexistentDuplicateAndOfflineWithoutCache]' passed (40.803 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-final-ipad: Failed, passed=22, failed=1, skipped=0
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCancelledRefreshCannotOverwriteCache]' passed (0.108 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.017 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastNavigationControllersAreReleased]' passed (0.044 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.012 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.004 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.006 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testLateResponseCannotRecreateDeletedCity]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.008 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testReducedAccuracyLocationDoesNotDuplicateCity]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.009 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (92.445 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (26.246 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' failed (57.007 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCityManagementAndLocationFromSettings]' passed (33.521 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionAllowed]' passed (11.590 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionDeniedKeepsManualEntry]' passed (12.170 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testNonexistentDuplicateAndOfflineWithoutCache]' passed (41.372 seconds).
+** TEST EXECUTE FAILED **
+review-final-ipad-corrected: Passed, passed=23, failed=0, skipped=0
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCancelledRefreshCannotOverwriteCache]' passed (0.138 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.022 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastNavigationControllersAreReleased]' passed (0.043 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testLateResponseCannotRecreateDeletedCity]' passed (0.004 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.007 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testReducedAccuracyLocationDoesNotDuplicateCity]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.004 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (92.450 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (26.199 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (52.882 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCityManagementAndLocationFromSettings]' passed (33.608 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionAllowed]' passed (11.499 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionDeniedKeepsManualEntry]' passed (12.112 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testNonexistentDuplicateAndOfflineWithoutCache]' passed (41.049 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-iphone-gesture: Passed, passed=1, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (50.051 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-final-lifecycle-iphone: Passed, passed=18, failed=0, skipped=0
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCancelledRefreshCannotOverwriteCache]' passed (0.152 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.021 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastNavigationControllersAreReleased]' passed (0.043 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.011 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testLateResponseCannotRecreateDeletedCity]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.007 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testReducedAccuracyLocationDoesNotDuplicateCity]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.004 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testZProcessOfflineCache]' passed (17.242 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (51.538 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-final-lifecycle-ipad: Passed, passed=18, failed=0, skipped=0
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCancelledRefreshCannotOverwriteCache]' passed (0.174 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.022 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastNavigationControllersAreReleased]' passed (0.043 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testLateResponseCannotRecreateDeletedCity]' passed (0.004 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.008 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testReducedAccuracyLocationDoesNotDuplicateCity]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testZProcessOfflineCache]' passed (17.534 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (52.341 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-final-live-iphone: Passed, passed=2, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (91.011 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testZProcessOfflineCache]' passed (18.209 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-final-live-ipad: Passed, passed=2, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (94.913 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testZProcessOfflineCache]' passed (18.140 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-default-integration-gate: Skipped, passed=0, failed=0, skipped=2
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' skipped (0.078 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testZProcessOfflineCache]' skipped (0.071 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-adaptive-fixed-iphone: Failed, passed=0, failed=1, skipped=0
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' failed (55.421 seconds).
+** TEST EXECUTE FAILED **
+review-adaptive-fixed-ipad: Failed, passed=0, failed=1, skipped=0
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' failed (45.725 seconds).
+** TEST EXECUTE FAILED **
+review-adaptive-corrected-iphone: Passed, passed=1, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (33.546 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-adaptive-corrected-ipad: Passed, passed=1, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (28.326 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-width-iphone: Passed, passed=1, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (33.248 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-width-ipad: Passed, passed=1, failed=0, skipped=0
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (27.612 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-acceptance-iphone: Passed, passed=24, failed=0, skipped=0
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCancelledRefreshCannotOverwriteCache]' passed (0.269 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.022 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastNavigationControllersAreReleased]' passed (0.106 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.011 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testLateResponseCannotRecreateDeletedCity]' passed (0.006 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.010 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testReducedAccuracyLocationDoesNotDuplicateCity]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.014 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (90.834 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testZProcessOfflineCache]' passed (18.790 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (32.306 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (51.698 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCityManagementAndLocationFromSettings]' passed (32.006 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionAllowed]' passed (11.724 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionDeniedKeepsManualEntry]' passed (12.410 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testNonexistentDuplicateAndOfflineWithoutCache]' passed (40.538 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-acceptance-ipad: Passed, passed=24, failed=0, skipped=0
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCancelledRefreshCannotOverwriteCache]' passed (0.268 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testCoreDataSQLiteReopenAndCityIsolation]' passed (0.023 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastNavigationControllersAreReleased]' passed (0.106 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testForecastRequestContractViaURLProtocol]' passed (0.011 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingEmptyResult]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingInvalidQueryHasNoRequest]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testGeocodingUnicodeAndAmbiguousCities]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testHTTPErrorAndOfflinePropagation]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testLateResponseCannotRecreateDeletedCity]' passed (0.006 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testMalformedParallelArraysAreRejected]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testNullWeatherIsMissingRatherThanZero]' passed (0.003 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testOfflineRefreshPreservesFullCache]' passed (0.009 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testRealJSONDTOAnd24HourWindow]' passed (0.002 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testReducedAccuracyLocationDoesNotDuplicateCity]' passed (0.001 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testSettingsPersistenceConversionsAndDuplicateCoordinates]' passed (0.005 seconds).
+Test Case '-[WeatherDiplomaTests.WeatherDiplomaTests testTimezonesAndRepeatedDSTHour]' passed (0.014 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testLiveUserJourney]' passed (92.760 seconds).
+Test Case '-[WeatherDiplomaUITests.LiveReviewUITests testZProcessOfflineCache]' passed (18.591 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testAdaptiveLandscapeAndLargeText]' passed (27.154 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCitiesForecastDetailsSettingsAndOfflineRelaunch]' passed (54.683 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testCityManagementAndLocationFromSettings]' passed (32.817 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionAllowed]' passed (11.624 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testLocationPermissionDeniedKeepsManualEntry]' passed (12.258 seconds).
+Test Case '-[WeatherDiplomaUITests.WeatherDiplomaUITests testNonexistentDuplicateAndOfflineWithoutCache]' passed (41.353 seconds).
+** TEST EXECUTE SUCCEEDED **
+review-debug-acceptance-build
+2026-11-01 03:59:32.788 appintentsmetadataprocessor[23711:4187838] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+** BUILD SUCCEEDED **
+review-release-acceptance-build
+2026-11-01 03:59:33.324 appintentsmetadataprocessor[23719:4187886] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+** BUILD SUCCEEDED **
+review-width-build
+2026-11-01 03:59:04.992 appintentsmetadataprocessor[23516:4186005] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+2026-11-01 03:59:05.449 appintentsmetadataprocessor[23524:4186042] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+2026-11-01 03:59:05.688 appintentsmetadataprocessor[23530:4186073] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+** TEST BUILD SUCCEEDED **

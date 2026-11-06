@@ -1,0 +1,28 @@
+Process 17153 is not debuggable. Due to security restrictions, leaks can only show or save contents of readonly memory of restricted processes.
+
+Process:         WeatherDiploma [17153]
+Path:            /Users/incar/Library/Developer/CoreSimulator/Devices/F756165E-B169-4486-BC43-93D8C72903F7/data/Containers/Bundle/Application/BDE58F09-46DB-4527-B4BF-658234E119DF/WeatherDiploma.app/WeatherDiploma
+Load Address:    0x100480000
+Identifier:      com.revangar.WeatherDiploma
+Version:         1.0 (1)
+Code Type:       ARM64
+Platform:        iOS Simulator
+Parent Process:  launchd_sim [5234]
+Target Type:     corpse
+
+Date/Time:       2026-11-01 03:40:39.171 +0300
+Launch Time:     2026-11-01 03:40:01.565 +0300
+OS Version:      macOS 26.4.1 (25E253)
+Report Version:  7
+Analysis Tool:   /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/usr/bin/leaks
+Analysis Tool Version:  iOS Simulator 26.5 (23F77)
+
+Physical footprint:         70.0M
+Physical footprint (peak):  75.6M
+Idle exit:                  untracked
+----
+
+leaks Report Version: 4.0
+Process 17153: 159207 nodes malloced for 22015 KB
+Process 17153: 0 leaks for 0 total leaked bytes.
+

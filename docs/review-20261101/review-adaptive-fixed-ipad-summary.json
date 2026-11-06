@@ -1,0 +1,45 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "7C7D0173-D3FD-4B7C-ABFD-25B0910F75D1",
+        "deviceName": "WeatherDiploma Review iPad",
+        "modelName": "iPad Pro 11-inch (M5) (16GB)",
+        "osBuildNumber": "23F77",
+        "osVersion": "26.5",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 0,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "WeatherDiploma · Built with macOS 26.4.1",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1793494495.112,
+  "passedTests": 0,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1793494426.394,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertTrue failed",
+      "targetName": "WeatherDiplomaUITests",
+      "testIdentifier": 1,
+      "testIdentifierString": "WeatherDiplomaUITests/testAdaptiveLandscapeAndLargeText()",
+      "testIdentifierURL": "test://com.apple.xcode/WeatherDiploma/WeatherDiplomaUITests/WeatherDiplomaUITests/testAdaptiveLandscapeAndLargeText",
+      "testName": "testAdaptiveLandscapeAndLargeText()"
+    }
+  ],
+  "title": "Test - WeatherDiploma",
+  "topInsights": [],
+  "totalTestCount": 1
+}

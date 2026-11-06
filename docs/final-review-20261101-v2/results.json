@@ -1,0 +1,204 @@
+{
+  "reviewDate": "2026-11-01",
+  "timezone": "Europe/Moscow",
+  "baseCommit": "022a9c82c5aeb3ba72c8449960557cdf3f8cab6e",
+  "environment": {
+    "xcode": "26.6 (17F113)",
+    "runtime": "iOS 26.5 (23F77)",
+    "physicalDevicesAccessed": false,
+    "runtimeInstalled": false
+  },
+  "builds": {
+    "final-test-products": {
+      "success": true,
+      "logSHA256": "4af42f19415fa2635041fe8caec48c9ea485dcaf87e72c29a7bb3a3257d8216c",
+      "log": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/final-test-products.log"
+    },
+    "fixed-debug-build": {
+      "success": true,
+      "logSHA256": "3be37a39b8afc3dbc3a75008d71720d1b2b6a8031618faab4dedb03ed2b3bc81",
+      "log": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/fixed-debug-build.log"
+    },
+    "fixed-release-build": {
+      "success": true,
+      "logSHA256": "d754826a02b1b8330757a0b0e59d5905f0107d249966f90559540714f85a6d10",
+      "log": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/fixed-release-build.log"
+    }
+  },
+  "testSessions": {
+    "baseline-iphone": {
+      "result": "Failed",
+      "passed": 9,
+      "failed": 1,
+      "skipped": 0,
+      "startTime": 1793554503.439,
+      "finishTime": 1793554869.592,
+      "failures": [
+        "Failed to create a bundle instance representing '/Users/incar/Library/Developer/CoreSimulator/Devices/F756165E-B169-4486-BC43-93D8C72903F7/data/Containers/Bundle/Application/BB94D9A8-34B0-41F2-9D72-55786637E839/WeatherDiploma.app/PlugIns/WeatherDiplomaTests.xctest'. Check that the bundle exists on disk."
+      ],
+      "logSHA256": "b405ac5b9628e41fcda6334050014b21d28d674976a1a2049e5d29c8455a9cf8",
+      "xcresult": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/baseline-iphone.xcresult"
+    },
+    "baseline-ipad": {
+      "result": "Failed",
+      "passed": 5,
+      "failed": 5,
+      "skipped": 0,
+      "startTime": 1793554579.61,
+      "finishTime": 1793554946.412,
+      "failures": [
+        "Failed to create a bundle instance representing '/Users/incar/Library/Developer/CoreSimulator/Devices/70105150-F630-4EC8-BD71-ED3C0150031D/data/Containers/Bundle/Application/A4B92590-6587-480C-8D4B-A33B13DC7E91/WeatherDiploma.app/PlugIns/WeatherDiplomaTests.xctest'. Check that the bundle exists on disk.",
+        "Error resetting authorization status for protected resource (XCTProtectedResourceLocationIdentifier). Timed out while resetting authorization status.",
+        "XCTAssertTrue failed",
+        "XCTAssertTrue failed",
+        "XCTAssertTrue failed"
+      ],
+      "logSHA256": "c8b70c63dfecc1a4a7d9fd6d4df491bf21f06e29eb31fb3baa4ad47fd4f09800",
+      "xcresult": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/baseline-ipad.xcresult"
+    },
+    "acceptance-iphone": {
+      "result": "Passed",
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "startTime": 1793554976.634,
+      "finishTime": 1793555434.462,
+      "failures": [],
+      "logSHA256": "9a3f4e274d2f69b8e555ca1f74210ea206d34c999bf080979e3d8c19beecab7d",
+      "xcresult": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/acceptance-iphone.xcresult"
+    },
+    "empty-before-iphone": {
+      "result": "Failed",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "startTime": 1793555463.819,
+      "finishTime": 1793555495.615,
+      "failures": [
+        "XCTAssertTrue failed - Manual entry must remain reachable in landscape with large text"
+      ],
+      "logSHA256": "87bff77a7007c20fd647a9114235bbc4bfbe55d5fb2534053bbb2ed539ab2b09",
+      "xcresult": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/empty-before-iphone.xcresult"
+    },
+    "fixed-accessibility-iphone": {
+      "result": "Failed",
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "startTime": 1793555664.788,
+      "finishTime": 1793555864.239,
+      "failures": [
+        "XCTAssertTrue failed - All 24 hours remain reachable with large text"
+      ],
+      "logSHA256": "b0eaa47c89d0928f2009dd0d4ff814ad19b4286d3443dea845d3cbf3865fe73e",
+      "xcresult": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/fixed-accessibility-iphone.xcresult"
+    },
+    "final-iphone": {
+      "result": "Passed",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "startTime": 1793556054.098,
+      "finishTime": 1793556529.667,
+      "failures": [],
+      "logSHA256": "3f592f0fda0052313f5611da37eb456724c77583610a1f4adee980b9173a6d04",
+      "xcresult": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/final-iphone.xcresult"
+    },
+    "final-ipad": {
+      "result": "Passed",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "startTime": 1793556664.13,
+      "finishTime": 1793557107.271,
+      "failures": [],
+      "logSHA256": "a4f25c188c5907d3d1f37247ae05d730fdfe40bc6805dee75642c3827b5d63ce",
+      "xcresult": "/Users/incar/Documents/Codex/2026-10-30/codex-weather-diploma-task-md-mac/outputs/final-review-20261101-v2/final-ipad.xcresult"
+    }
+  },
+  "sourceSHA256": {
+    "WeatherDiploma/.DS_Store": "e60f8512eafb20438f1af7a9be4d5c1006b1e184ae7420b09de0566bead8dda6",
+    "WeatherDiploma/UI/WeatherRootViewController.swift": "6d6a5f10e1d277613f21e3abfc8b109bae7b7938d519bb6c22b1ffcdf97c4052",
+    "WeatherDiploma/UI/ForecastDetailViewController.swift": "a7048b09fe45d61394f31812a89f78a8916d05d4e856f998a518368b2ce1fc4a",
+    "WeatherDiploma/UI/WeatherViewController.swift": "2549569a1ed2a4f9751b7995091182f1d18d6fca32db4bc5550410f8ddf1ca81",
+    "WeatherDiploma/UI/ReadableContainerViewController.swift": "20f6b0a38802f33fc310a22ac794ac5b841c59fd85789f280964b5b3d1f15b8c",
+    "WeatherDiploma/UI/OnboardingViewController.swift": "7cb32b1d885479967f22a84ac0e775ce952a002019847b151fe2817bd94dbc02",
+    "WeatherDiploma/UI/Components.swift": "227efb39676a52e3391f472dc52c247c3e4673d424b4da56cb1e37c18e0d4a8c",
+    "WeatherDiploma/UI/SettingsViewController.swift": "d3aae88c0701af9b45731bff70f4aede24b3740a5fc5c9ef0950c35bb8cc9407",
+    "WeatherDiploma/App/DebugNetwork.swift": "d74eb5690e4c9c3a436dce6e1f959063f8e88eea7aa7a9ec700f62fa91b77fc0",
+    "WeatherDiploma/App/AppDelegate.swift": "80db1c39ebb821477e960c59e95d8167c6b17edb70048ddfb39161e4ec403b68",
+    "WeatherDiploma/Resources/PrivacyInfo.xcprivacy": "8f77e96341fa6cb4f1ce76bad84e8fa35449ca6db4f33bb0e1cfd035ee935c02",
+    "WeatherDiploma/Resources/Info.plist": "50c01cd7621760f0af5a0787037c23f4bcc15fc7511ec48249f42457f81cad00",
+    "WeatherDiploma/Persistence/CoreDataStack.swift": "d565b6b114ed7e0e3971f3f0b644787b0deb9ec4201cb2c0f66034c641ad46ea",
+    "WeatherDiploma/Persistence/WeatherRepository.swift": "dea62542d7f2a795fcee12b72d9ec105c8d76f4372a817f9eaa91e1f3c8bfefb",
+    "WeatherDiploma/Domain/Models.swift": "0891cfb323bb77c78b6ea5fe69fe4125f38558b8ea6017cdc3919ab88ef46f67",
+    "WeatherDiploma/Services/WeatherAPIClient.swift": "7104e6a13fbbae3fd5cf4e294e755d3d7ed4b365977d2b8f859d33fa93f5043a",
+    "WeatherDiploma/Services/GeocodingService.swift": "4be2444e38b4cd64d8615d776c67bc52322e537ded56b58310d3da3f8a8015be",
+    "WeatherDiploma/Services/LocationService.swift": "b713f5027f122cebd5f82085628137bb32bd5a5f02b7a6f7679c8295716ad814",
+    "WeatherDiploma/Resources/Assets.xcassets/Contents.json": "10e3b5dc202f1cd9fad1f688c8fc9fe9e9669bf3f8295e67d216b10fd99b6f49",
+    "WeatherDiploma/Resources/Fixtures/forecast-fixture.json": "ca1d223606b1b6b5f7e48b0476655a239e88d202fa93b16cf439865c4b5c36eb",
+    "WeatherDiploma/Resources/WeatherModel.xcdatamodeld/WeatherModel.xcdatamodel/contents": "5fdf3fcf341166c27570cc30a1f292cc5050648a3dbab53f15ee3a351e19e3e9",
+    "WeatherDiploma/Resources/Assets.xcassets/LaunchBackground.colorset/Contents.json": "4903316838f18b6909bdc049bbbccdf9e080f6ca3a3d37fdb3c6b82a1c5ae96f",
+    "WeatherDiploma/Resources/Assets.xcassets/AppIcon.appiconset/Contents.json": "6ad2c5c3bbcf972c7f02d217d6afcac3f24a10e30510c7e2d06c582371ed9d22",
+    "WeatherDiploma/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png": "21732f7fb04677779d5167292f05a21ca0343c320fe98ac86456f7bea9e224cc",
+    "WeatherDiplomaTests/WeatherDiplomaTests.swift": "b7807615e17f98b29c8344ca41c280d2abd32f05d1687bc3892df585f0a931d7",
+    "WeatherDiplomaUITests/WeatherDiplomaUITests.swift": "0ed57128cb63d6202bf98dea91073497065d024011cb4942deb1a50326177a02",
+    "WeatherDiplomaUITests/LiveReviewUITests.swift": "1bab50d4bc41257b8a0bfd7231848ac4db98982f7c0bbf3ddb69220d12e84cc5"
+  },
+  "screenshotsSHA256": {
+    "before/iphone-settings-large-text.png": "910938237ad1ec4044cadd396a35aab04f12e7754dee92a4eaa433076a72a57a",
+    "before/iphone-empty-large-text-landscape.png": "b5d7738c4d2cd63b13e52e0d8f8a18eb26eeef707c9afe8f49b231e9cff17821",
+    "after/iphone-13-accessibility-portrait.png": "9ed030cc991fcc0885036b4883d1f4f518b4980347bca5b181d539095c2d2d0f",
+    "after/ipad-live-04-moscow.png": "1122be18b739e7b824a1395f1738e01240633582809052d1c66ecdd2a4590347",
+    "after/iphone-live-10-relaunch.png": "4e9052154e9255215989f160599b5a0817b8384871acecd3fd37148eede3fb39",
+    "after/iphone-live-16-offline-day.png": "6989bec0c02b671a049a6589bd4d2872f43f99dd5f8fda56cfdd668c5cc30230",
+    "after/ipad-20-large-text-settings-landscape.png": "f6928e27b9b80d0f89591e4d67637c83dce9ec05153af69f3a697a34c6c51825",
+    "after/iphone-live-07-seven-days.png": "2786d55284bfc41666b06c2c8c4ade5592b8b29240c2111a9ce278273b27f422",
+    "after/ipad-live-03-empty.png": "d814b4e56d5155960d4cabc0494521aded7d54595acf26a6c4703b3b80652dc0",
+    "after/iphone-18-large-text-day.png": "b2850788f45131626bd014e8ed48c4ca7f8b04f7b9d37cb555bf55ee443b0308",
+    "after/ipad-21-large-text-empty-landscape.png": "f9cdb51707ae7e3f228ce81704a7783de08732aff69be33aea10e0371229c155",
+    "after/ipad-live-02-location-denied.png": "95a670dc97330a02db08f7ec2eefc82510c0331432e39d9e85440151c8823a43",
+    "after/ipad-live-10-relaunch.png": "136ec92acf80ef5bad138977ef29e5b68fd51f79b3107e540d2fb87c1fec43e7",
+    "after/ipad-live-05-hours.png": "a97b66d4dea6e9f96718aec1ca22bf7b753310d1b88a9ffc4e6e4e22a844d176",
+    "after/iphone-19-large-text-settings.png": "1d398c10fa8ebdad22e54b37ce878a33cda0fa6b29a9a79335eafa79c0e14bd2",
+    "after/iphone-15-seven-days-large-text.png": "c43cefe0a73b376cd5fca2e10eef378b7441721d16ad112db645f429e8f953d1",
+    "after/ipad-live-12-location-allowed.png": "c37bcc8de1fa1b273a19b89038293a870c5fb24303c3fedecc309198ec9b91dc",
+    "after/iphone-live-01-onboarding.png": "6431f50d547d4342e98b8cf86bc227dedaf0776779f66d5e74ef583f30b7edfe",
+    "after/iphone-live-14-offline-cache.png": "80c77dfd199451e83c17fdabcaa76704597de0dc5c0e38fae75950956d591702",
+    "after/iphone-live-04-moscow.png": "284b3b7b87a5704e11f2d72d5e84ead8da7a6f35834bd60ae53f3486dfa30ed8",
+    "after/ipad-live-17-network-restored.png": "6a765af7de6ca5a889427f2d5fe5e7007c3240ff4337913514bd546603eb5fc8",
+    "after/iphone-live-06-daily.png": "917553f10bf23f1c49464db0ddcedc53192f36f90cba1f303d5bdc56406c715e",
+    "after/ipad-live-15-offline-hours.png": "e3dd63a10d21d52e78aed5b9093f33a372fe8f318f83eddc619fcb5471d6d906",
+    "after/iphone-17-large-text-hours.png": "cd7a56ad5ce3c844a0098eb24485046b37adbcd6e4028e51dad85bf908013193",
+    "after/iphone-live-11-delete-city.png": "4fdd047f5e17600dee81c4fa7ad017e284654fa6b2b66924ae18c29060fd6285",
+    "after/iphone-live-15-offline-hours.png": "476df74aa336b5d39a88630d824799b37a2a861afc6f7a295433f38604239bb4",
+    "after/ipad-18-large-text-day.png": "688a4cf8b6be012bffbd9a263fab048079ee4369336947ae9bebcd0defb6a18d",
+    "after/iphone-live-02-location-denied.png": "b76b121a0a0846c64511bef99340986e927cf05065342a0a31d75e3d0866691f",
+    "after/ipad-live-14-offline-cache.png": "d1a5ac4ef654d9042d6894d715b08c108bfbfd5ee3c0bd9d301499f33d5b3228",
+    "after/iphone-22-large-text-empty-action.png": "62f61648c5185a4854ca806b1d69eaa3146a37ce5781618b4ea927fcc63d65ab",
+    "after/iphone-live-05-hours.png": "71d8aaa2d3271e8b8fd8d9aa0f4d4a0ace6e7182ebd89f8a1f40e9a8975bcfb1",
+    "after/ipad-14-accessibility-landscape.png": "4f1a6245811c013fb8e5e4ff06778b73a7fbf1ec9e88c8dd1ad2dce7fdc361b2",
+    "after/ipad-live-09-settings.png": "9b9c562eada6c663ba1ba76e5619097e31600b47ddb82db5670049041a533253",
+    "after/ipad-live-08-berlin.png": "8a62ec3122d6353dc3efecb576c40a4586a0a42334a7365e38d8f45cda33f811",
+    "after/ipad-live-16-offline-day.png": "3a2e7ffa0856c0e7700775fc1f0b22cb91bdfc471c5d95ac706a7b19617b35d6",
+    "after/iphone-live-09-settings.png": "7f4f554350d65e6017f7c4941e22957331b4ab050fff3b7940473b9823f93694",
+    "after/ipad-13-accessibility-portrait.png": "10d3824cce30e1c4a4bf2e7f03a5700b77403ae659d65619421c3577cefdcc6e",
+    "after/ipad-19-large-text-settings.png": "384d879454a9d3e838b0a3d79713db0e0d64af505b6ea5df8701e878c24a78dd",
+    "after/ipad-live-13-landscape.png": "74a1d0a80ebe8032d5d94bf7c4171e50daa1ae167586620d25a8e6273ab2a179",
+    "after/iphone-20-large-text-settings-landscape.png": "c81109a9db5a927359a1a1bb5a6d8f7fcae7c343004dbd95d18467876bdc0379",
+    "after/iphone-21-large-text-empty-landscape.png": "2ba761617044bbb98a709e7f2b7823d9cc2b28d0a213fb47b5954cd0d1c84741",
+    "after/ipad-15-seven-days-large-text.png": "d920a5b6cbfff0cea15a07c3bec20f2b91326e3b6a1fc76a8b2e3ffc442d7c59",
+    "after/iphone-live-12-location-allowed.png": "c0d3a06ea2188684e3287f75dca8bbd7aa7c9299ae687fb656c6c5b31ad43804",
+    "after/iphone-live-03-empty.png": "701e41c062ec7a223e883dfd8c1f998c8f7424d5c17bb95456d03c0d27e30ec8",
+    "after/ipad-live-07-seven-days.png": "1122be18b739e7b824a1395f1738e01240633582809052d1c66ecdd2a4590347",
+    "after/ipad-22-large-text-empty-action.png": "f9cdb51707ae7e3f228ce81704a7783de08732aff69be33aea10e0371229c155",
+    "after/ipad-live-11-delete-city.png": "5ac31f716143da6655f9155216e5bbe40de1bce1177b658bb5e80380ec91541a",
+    "after/iphone-live-17-network-restored.png": "83c1ad5f09a28de2ab5ab13aa476c1129cb2b56610d9a7fdd5a790bd84fed4c9",
+    "after/iphone-live-13-landscape.png": "27ba4c2062467b26398a74ef308b57ae42ccecbe111467c5762e1eb8f05a9dc0",
+    "after/iphone-14-accessibility-landscape.png": "ec3f8f50ac8ef79d156da1baf1b4443f9aac00d2f93374acee729ca7b2b27820",
+    "after/iphone-live-08-berlin.png": "b570990ddf7fe66b92a57e4d22e10571203e6098b0068107ba202f7f2057e655",
+    "after/ipad-live-01-onboarding.png": "9d97066af791265b5e7c234e992ba27fb383d4db861bc3eca229932d36f0e366",
+    "after/ipad-live-06-daily.png": "42ae9b1a11fc296a1400b9fdc323eaaa6f0ab9496f01784f5c76c82219e620f2",
+    "after/ipad-17-large-text-hours.png": "b9a3cd1db2998a05ccf4a880141f0ad98daa759e7346453f12ad51c91f9a8600"
+  }
+}
