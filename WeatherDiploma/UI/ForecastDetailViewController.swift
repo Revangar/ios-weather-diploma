@@ -1,3 +1,4 @@
+import SwiftUI
 import UIKit
 
 final class ForecastDetailViewController: UITableViewController {
@@ -7,6 +8,7 @@ final class ForecastDetailViewController: UITableViewController {
     private let dailyMode: Bool
     private var selectedDay: Int
     private var selectedHour: Int
+    private var chartHost: UIHostingController<HourlyWeatherCharts>?
     private weak var dayScroll: UIScrollView?
     private weak var selectedDayButton: UIButton?
     private var shouldAlignDay = false
@@ -57,6 +59,13 @@ final class ForecastDetailViewController: UITableViewController {
         }
     }
     private func renderHeader() {
+        // Remove the previous hosting controller before rebuilding the header.
+        // Without this, switching days would accumulate child controllers.
+        chartHost?.willMove(toParent: nil)
+        chartHost?.view.removeFromSuperview()
+        chartHost?.removeFromParent()
+        chartHost = nil
+
         let title = label(city.name, style: .title2)
         let zone = label("\(forecast.timezone) · \(WeatherFormat.date(forecast.fetchedAt, zone: forecast.timezone, format: "dd.MM HH:mm"))", style: .caption1, color: .secondaryLabel)
         let column = stack([title, zone])
@@ -105,6 +114,23 @@ final class ForecastDetailViewController: UITableViewController {
             self.tableView.scrollToRow(at: IndexPath(row: row, section: 0), at: .middle, animated: true)
         }
         column.addArrangedSubview(strip)
+
+        // Swift Charts is an isolated visualization; the surrounding screen,
+        // navigation and data flow remain UIKit-based.
+        let host = UIHostingController(
+            rootView: HourlyWeatherCharts(
+                hours: hours,
+                timezone: forecast.timezone,
+                settings: settings
+            )
+        )
+        host.sizingOptions = .intrinsicContentSize
+        host.view.backgroundColor = .clear
+        addChild(host)
+        column.addArrangedSubview(host.view)
+        host.didMove(toParent: self)
+        chartHost = host
+
         let container = UIView()
         column.pin(in: container, inset: 18)
         tableView.tableHeaderView = container

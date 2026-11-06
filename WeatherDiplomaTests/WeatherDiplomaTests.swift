@@ -229,6 +229,56 @@ final class WeatherDiplomaTests: XCTestCase {
         XCTAssertNil(cached, "A late network response must not recreate deleted forecast records")
         XCTAssertTrue(cities.isEmpty)
     }
+    func testHourlyChartsUseRealValuesAndRespectUnits() {
+        let first = Date(timeIntervalSince1970: 1_800_000_000)
+        let second = first.addingTimeInterval(3600)
+        let known = HourWeather(
+            time: first,
+            temperature: 10,
+            feelsLike: nil,
+            humidity: nil,
+            precipitation: nil,
+            probability: 75,
+            wind: nil,
+            direction: nil,
+            cloud: nil,
+            code: nil,
+            isDay: true
+        )
+        let missing = HourWeather(
+            time: second,
+            temperature: nil,
+            feelsLike: nil,
+            humidity: nil,
+            precipitation: nil,
+            probability: nil,
+            wind: nil,
+            direction: nil,
+            cloud: nil,
+            code: nil,
+            isDay: false
+        )
+
+        let celsius = HourlyChartDataset(
+            hours: [known, missing],
+            settings: WeatherSettings()
+        )
+        XCTAssertEqual(celsius.temperatures.count, 1)
+        XCTAssertEqual(celsius.temperatures.first?.time, first)
+        XCTAssertEqual(celsius.temperatures.first?.value, 10)
+        XCTAssertEqual(celsius.precipitationChance.count, 1)
+        XCTAssertEqual(celsius.precipitationChance.first?.value, 75)
+
+        let fahrenheit = HourlyChartDataset(
+            hours: [known, missing],
+            settings: WeatherSettings(fahrenheit: true)
+        )
+        XCTAssertEqual(fahrenheit.temperatures.count, 1)
+        XCTAssertEqual(fahrenheit.temperatures[0].value, 50, accuracy: 0.001)
+        // Missing values stay missing instead of turning into fabricated zeros.
+        XCTAssertEqual(fahrenheit.precipitationChance.count, 1)
+    }
+
     func testForecastNavigationControllersAreReleased() async throws {
         let value = try forecast()
         weak var weakDetail: ForecastDetailViewController?
