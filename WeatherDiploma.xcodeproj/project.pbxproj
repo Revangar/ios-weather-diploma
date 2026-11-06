@@ -105,6 +105,16 @@
 			"isa" = "PBXBuildFile";
 			"fileRef" = "19927423B05DE176514CFB6B";
 		};
+		"BFD4A537CD207AA681D20E51" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "WeatherDiploma/UI/HourlyWeatherCharts.swift";
+			"sourceTree" = "SOURCE_ROOT";
+		};
+		"BFD4A537CD207AA681D20E52" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "BFD4A537CD207AA681D20E51";
+		};
 		"22FB00A64472E4CD8EF5E2B2" = {
 			"isa" = "PBXFileReference";
 			"lastKnownFileType" = "sourcecode.swift";
@@ -219,6 +229,7 @@
 				"D728E8B85D08BBD0DF2CFD83",
 				"508A100DCC7F3420276F0212",
 				"1A139980E572EB80870A62C3",
+				"BFD4A537CD207AA681D20E52",
 				"E7A8EAF90360ACCA67FEB054",
 				"99D5F9CB657BB5D3FFD8ADF5",
 				"3EAD026B2757DE70D2DDF379",
