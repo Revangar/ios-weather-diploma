@@ -229,6 +229,39 @@ final class WeatherDiplomaTests: XCTestCase {
         XCTAssertNil(cached, "A late network response must not recreate deleted forecast records")
         XCTAssertTrue(cities.isEmpty)
     }
+    func testHourlyChartsCellAndDetailRowsCoexist() throws {
+        let value = try forecast()
+
+        let hourly = ForecastDetailViewController(
+            city: moscow, forecast: value, settings: WeatherSettings()
+        )
+        hourly.loadViewIfNeeded()
+
+        XCTAssertEqual(hourly.numberOfSections(in: hourly.tableView), 2)
+        XCTAssertEqual(hourly.tableView(hourly.tableView, numberOfRowsInSection: 0), 1)
+        XCTAssertEqual(
+            hourly.tableView(hourly.tableView, numberOfRowsInSection: 1),
+            value.next24.count
+        )
+
+        let chartCell = hourly.tableView(
+            hourly.tableView,
+            cellForRowAt: IndexPath(row: 0, section: 0)
+        )
+        XCTAssertEqual(chartCell.accessibilityIdentifier, "forecast-charts")
+        XCTAssertNotNil(chartCell.contentConfiguration)
+
+        let daily = ForecastDetailViewController(
+            city: moscow, forecast: value, settings: WeatherSettings(), day: 0
+        )
+        daily.loadViewIfNeeded()
+        XCTAssertEqual(daily.numberOfSections(in: daily.tableView), 2)
+        XCTAssertEqual(
+            daily.tableView(daily.tableView, numberOfRowsInSection: 1),
+            value.hours(on: value.days[0]).count + 3
+        )
+    }
+
     func testForecastNavigationControllersAreReleased() async throws {
         let value = try forecast()
         weak var weakDetail: ForecastDetailViewController?

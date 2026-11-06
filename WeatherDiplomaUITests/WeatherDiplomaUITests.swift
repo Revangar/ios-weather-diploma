@@ -67,7 +67,12 @@ final class WeatherDiplomaUITests: XCTestCase {
         addCity(app, query: "Moscow", country: "Россия")
         screenshot("03-weather-moscow")
         app.buttons["open-hours"].tap()
-        XCTAssertTrue(app.tables["hourly-detail"].waitForExistence(timeout: 5))
+        let hourlyTable = app.tables["hourly-detail"]
+        XCTAssertTrue(hourlyTable.waitForExistence(timeout: 5))
+        for _ in 0..<3 where !hourlyTable.cells["forecast-charts"].exists {
+            hourlyTable.swipeUp()
+        }
+        XCTAssertTrue(hourlyTable.cells["forecast-charts"].exists, "Hourly screen must contain Swift Charts")
         screenshot("04-hourly")
         app.navigationBars.buttons.element(boundBy: 0).tap()
         app.buttons["forecast-25"].tap()
@@ -76,7 +81,12 @@ final class WeatherDiplomaUITests: XCTestCase {
         let table = app.tables["weather-table"]
         for _ in 0..<4 where !app.cells["day-0"].isHittable { table.swipeUp() }
         app.cells["day-0"].tap()
-        XCTAssertTrue(app.tables["daily-detail"].waitForExistence(timeout: 5))
+        let dailyTable = app.tables["daily-detail"]
+        XCTAssertTrue(dailyTable.waitForExistence(timeout: 5))
+        for _ in 0..<3 where !dailyTable.cells["forecast-charts"].exists {
+            dailyTable.swipeUp()
+        }
+        XCTAssertTrue(dailyTable.cells["forecast-charts"].exists, "Daily detail must contain Swift Charts")
         app.buttons["select-day-1"].tap()
         screenshot("05-daily")
         app.navigationBars.buttons.element(boundBy: 0).tap()
